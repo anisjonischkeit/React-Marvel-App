@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
-import SampleComponent from 'components/SampleComponent';
+import TopBar from 'containers/template/TopBar';
+import FlatButton from 'material-ui/FlatButton';
 
 class App extends Component {
   render() {
     return (
       <div>
-        <p>Hello World</p>
-        <SampleComponent />
+        <TopBar />
       </div>
     );
   }
