@@ -8,9 +8,12 @@ import { setSidebarOpenState } from 'actions/template/sidebarActions';
 import Sidebar from 'components/template/SideBar';
 import MenuItem from 'containers/template/SideBarMenuItem';
 
+import PersonIcon from 'material-ui/svg-icons/social/person';
+import BooksIcon from 'material-ui/svg-icons/av/library-books';
+
 const menuItems = [
-  {text: 'Characters', link: '/characters'},
-  {text: 'Comics', link: '/comics'}
+  {text: 'Characters', link: '/characters', leftIcon: <PersonIcon />},
+  {text: 'Comics', link: '/comics', leftIcon: <BooksIcon />}
 ]
 
 const mapStateToProps = (state/*: State*/) => ({

@@ -4,18 +4,25 @@ import TopBar from 'containers/template/TopBar';
 import TopBarPadding from 'components/template/TopBarPadding';
 import SideBar from 'containers/template/SideBar';
 import ItemList from 'containers/mainList/ItemList'
+import CentreContentWrapper from 'components/template/CentreContentWrapper'
 
-class App extends Component {
+export default class App extends Component {
   render() {
     return (
       <div>
-        <TopBar />
         <SideBar />
-        <TopBarPadding />
-        <ItemList />
+        <CentreContentWrapper>
+          <TopBar />
+          <TopBarPadding />
+          <ItemList />
+        </CentreContentWrapper>
       </div>
     );
   }
 }
 
-export default App;
+// const mapStateToProps = (state) => ({
+//   isSidebarOpen: state.template.sidebar.open
+// });
+
+// export default connect(mapStateToProps)(App);

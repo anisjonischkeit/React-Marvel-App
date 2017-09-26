@@ -17,7 +17,7 @@ export default ({ title, onHamburgerClick }: PropsType) => (
 			{
 				position: 'fixed',
 				top: 0,
-				left: 0
+				left: '56px'
 			}
 		}
   />

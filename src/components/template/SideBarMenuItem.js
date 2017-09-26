@@ -11,10 +11,14 @@ type PropsType = {
 	text: MenuItemDataType
 };
 
-export default ({ text, onClick }: PropsType) => (
+export default ({ text, leftIcon, onClick }: PropsType) => (
   <MenuItem
     key={text}
     onClick={onClick}
+    leftIcon={leftIcon}
+    style={{
+      // backgroundColor: "rgba(0, 0, 0, 0.2)"
+    }}
   >
     {text}
   </MenuItem>
