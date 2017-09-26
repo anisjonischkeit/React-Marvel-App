@@ -1,7 +1,7 @@
 // @flow
 
 import React from 'react';
-import AppBar from 'material-ui/AppBar'
+import TopBarComponent from 'components/template/TopBar';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
@@ -12,10 +12,9 @@ type PropsType = {
 }
 
 const TopBar = ({ openSideBar }: PropsType) => (
-  <AppBar
-  title="The Marvel Universe Graph"
-  iconClassNameRight="muidocs-icon-navigation-expand-more"
-  onLeftIconButtonTouchTap={openSideBar}
+  <TopBarComponent
+    title="The Marvel Universe Graph"
+    onHamburgerClick={openSideBar}
   />
 )
 
