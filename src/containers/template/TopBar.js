@@ -11,9 +11,6 @@ type PropsType = {
   setOpenState: typeof openSideBar
 }
 
-
-
-
 const TopBar = ({ openSideBar }: PropsType) => (
   <AppBar
   title="The Marvel Universe Graph"
