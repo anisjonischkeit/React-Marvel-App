@@ -1,8 +1,12 @@
 import type { ActionsType } from 'types/redux'
-import { GET_CHARACTERS } from 'actions/data/characterActions'
+import { 
+	GET_CHARACTERS, 
+	SET_CHARACTER_LOADING_STATUS
+} from 'actions/data/characterActions'
 
 export type StateType = {
-	list: ?Array<any>
+	list: ?Array<any>,
+	loading: boolean
 }
 
 const initialState = {
@@ -14,7 +18,12 @@ export default (state: StateType = initialState, action : ActionsType) => {
 		case GET_CHARACTERS:
 			return {
 				...state,
-				list: action.list
+				list: action.characterList
+			}
+		case SET_CHARACTER_LOADING_STATUS:
+			return {
+				...state,
+				loading: action.loading
 			}
 		default:
 			return state
