@@ -3,8 +3,10 @@ import React, { Component } from 'react';
 import TopBar from 'containers/template/TopBar';
 import TopBarPadding from 'components/template/TopBarPadding';
 import SideBar from 'containers/template/SideBar';
-import ItemList from 'containers/mainList/ItemList'
+// import ItemList from 'containers/mainList/ItemList'
 import CentreContentWrapper from 'components/template/CentreContentWrapper'
+import Router from 'Router';
+
 
 export default class App extends Component {
   render() {
@@ -14,7 +16,7 @@ export default class App extends Component {
         <CentreContentWrapper>
           <TopBar />
           <TopBarPadding />
-          <ItemList />
+          <Router />
         </CentreContentWrapper>
       </div>
     );
