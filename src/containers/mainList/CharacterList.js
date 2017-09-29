@@ -1,5 +1,5 @@
 import * as React from 'react';
-import ItemListComponent from 'components/mainList/ItemList';
+import FixedWidthItemListComponent from 'components/mainList/FixedWidthItemList';
 
 import { bindActionCreators } from 'redux';
 import { fetchCharacters } from 'actions/data/characterActions'
@@ -15,11 +15,11 @@ const mapCharactersToItemList = (item: any) => ({
 
 class CharacterList extends React.Component {
 	componentDidMount() {
-		fetchCharacters() //change to use middleware once you have internet
+		this.props.fetchCharacters() //change to use middleware once you have internet
 	}
 
 	render() {
-		return <ItemListComponent {...this.props.childProps}/>
+		return <FixedWidthItemListComponent {...this.props.childProps}/>
 	}
 }
 
