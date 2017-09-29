@@ -1,5 +1,3 @@
-import store from 'store'
-
 
 export const GET_CHARACTERS = 'GET_CHARACTERS';
 export const SET_CHARACTER_LOADING_STATUS = 'SET_CHARACTER_LOADING_STATUS';
@@ -14,8 +12,8 @@ export const setCharactersLoadingStatus = (loading: boolean) => ({
 	loading
 })
 
-export const fetchCharacters = () => {
-	store.dispatch(setCharactersLoadingStatus(true))
+export const fetchCharacters = () => dispatch => {
+	dispatch(setCharactersLoadingStatus(true))
 	const fakeCharacters = [
 		{
 			"id": 1011334,
@@ -3243,5 +3241,5 @@ export const fetchCharacters = () => {
 			]
 		}
 	]
-	setTimeout(() => console.log(`hi ${String(fakeCharacters)}`) || store.dispatch(getCharacters(fakeCharacters)), 2000)
+	setTimeout(() => console.log(`hi ${String(fakeCharacters)}`) || dispatch(getCharacters(fakeCharacters)), 2000)
 }
