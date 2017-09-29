@@ -1,10 +1,17 @@
+// @flow
+
 import React from 'react';
+import {GridList, GridTile} from 'material-ui/GridList';
 
-import { List, ListItem } from 'material-ui/List'
-import Avatar from 'material-ui/Avatar'
-import { darkBlack, lightBlack } from 'material-ui/styles/colors';
+const styles = {
+  root: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'space-around',
+  }
+};
 
-export type PropsType = {
+type PropsType = {
   rawList: Array<{
     id: number,
     img: string,
@@ -21,16 +28,14 @@ const getList = (list, loading: boolean) => {
   } else {
     if (list != null) {
       return list.map(item => (
-        <ListItem
-					leftAvatar={<Avatar src="images/ok-128.jpg" />}
-					primaryText={item.heading}
-					secondaryText={
-						<p>
-							<span style={{color: lightBlack}}>{item.subheading}</span>
-						</p>
-					}
-					secondaryTextLines={1}
-				/>
+        <GridTile
+          key={item.id}
+          title={item.heading}
+          subtitle={item.subheading}
+          onClick={item.onClick}
+        >
+          <img src={item.img} />
+        </GridTile>
       ))
     } else {
       return <p>no data found</p>
@@ -41,11 +46,11 @@ const getList = (list, loading: boolean) => {
 export default ({ rawList, loading }: PropsType) => {
   const list = getList(rawList, loading)
   return (
-    <List
+    <GridList
       cellHeight={180}
       cols={Math.floor(document.body.clientWidth/180)}
     >
       {list}
-    </List>
+    </GridList>
   )
 }

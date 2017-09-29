@@ -1,0 +1,6 @@
+.fixedWidthItemList {
+	width: 400px;
+	float: left;
+	overflow-y: auto;
+	height: 100vh;
+}
