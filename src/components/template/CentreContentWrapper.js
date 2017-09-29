@@ -5,7 +5,7 @@ type PropsType = {
 }
 
 export default ({ children }: PropsType) => (
-	<div style={{width: "calc(100% - 56px)", paddingLeft: "56px"}}>
+	<div style={{width: "calc(100% - 56px)", paddingLeft: "56px", overflow: 'hidden'}}>
 		{ children }
 	</div>
 )
