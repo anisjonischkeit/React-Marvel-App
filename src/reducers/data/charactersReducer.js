@@ -1,16 +1,22 @@
 import type { ActionsType } from 'types/redux'
 import { 
 	GET_CHARACTERS, 
-	SET_CHARACTER_LOADING_STATUS
+	SET_CHARACTER_LOADING_STATUS,
+	SELECT_CHARACTER
 } from 'actions/data/characterActions'
 
 export type StateType = {
-	list: ?Array<any>,
-	loading: boolean
+	obj: ?Array<any>,
+	order: ?Array<string>,
+	loading: boolean,
+	selectedId: ?number
 }
 
 const initialState = {
-	list: null
+	obj: null,
+	order: null,
+	loading: false,
+	selectedId: null
 }
 
 export default (state: StateType = initialState, action : ActionsType) => {
@@ -18,12 +24,18 @@ export default (state: StateType = initialState, action : ActionsType) => {
 		case GET_CHARACTERS:
 			return {
 				...state,
-				list: action.characterList
+				obj: action.characterObj,
+				order: action.characterOrder
 			}
 		case SET_CHARACTER_LOADING_STATUS:
 			return {
 				...state,
 				loading: action.loading
+			}
+		case SELECT_CHARACTER:
+			return {
+				...state,
+				selectedId: action.characterId
 			}
 		default:
 			return state

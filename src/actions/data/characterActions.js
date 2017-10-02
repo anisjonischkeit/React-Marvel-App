@@ -1,10 +1,17 @@
 
 export const GET_CHARACTERS = 'GET_CHARACTERS';
 export const SET_CHARACTER_LOADING_STATUS = 'SET_CHARACTER_LOADING_STATUS';
+export const SELECT_CHARACTER = 'SELECT_CHARACTER';
 
-export const getCharacters = (characterList: any) => ({
+export const getCharacters = (characterObj: any, characterOrder: Array<string>) => ({
 	type: GET_CHARACTERS,
-	characterList
+	characterObj,
+	characterOrder
+})
+
+export const selectCharacter = (characterId: ?number) => ({
+	type: SELECT_CHARACTER,
+	characterId
 })
 
 export const setCharactersLoadingStatus = (loading: boolean) => ({
@@ -3241,5 +3248,11 @@ export const fetchCharacters = () => dispatch => {
 			]
 		}
 	]
-	setTimeout(() => console.log(`hi ${String(fakeCharacters)}`) || dispatch(getCharacters(fakeCharacters)), 2000)
+	let characterObj = {};
+	let charOrder = [];
+	fakeCharacters.forEach(char => {
+		characterObj[char.id] = char
+		charOrder.push(char.id)
+	})
+	setTimeout(() => dispatch(getCharacters(characterObj, charOrder)), 2000)
 }
