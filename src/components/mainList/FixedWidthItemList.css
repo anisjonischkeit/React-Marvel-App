@@ -1,6 +1,9 @@
-.fixedWidthItemList {
+.fixedWidthItemListWrapper {
 	width: 400px;
 	float: left;
+}
+
+.fixedWidthItemList {
 	overflow-y: auto;
-	height: 100vh;
+	height: calc(100vh - 72px);
 }

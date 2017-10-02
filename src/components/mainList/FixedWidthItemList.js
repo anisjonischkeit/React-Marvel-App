@@ -1,10 +1,19 @@
 import React from 'react';
+
 import ItemList from 'components/mainList/ItemList';
 import type { PropsType } from 'components/mainList/ItemList';
 import './FixedWidthItemList.css'
 
+import TextField from 'material-ui/TextField';
+
 export default (props: PropsType) => (
-	<div className="fixedWidthItemList">
-		<ItemList {...props} />
+	<div className='fixedWidthItemListWrapper'>
+		<TextField
+			floatingLabelText="Search"
+			fullWidth
+		/>
+		<div className="fixedWidthItemList" width={props.width}>
+			<ItemList {...props} />
+		</div>
 	</div>
 )
