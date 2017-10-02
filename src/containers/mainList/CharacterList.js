@@ -2,7 +2,7 @@ import * as React from 'react';
 import FixedWidthItemListComponent from 'components/mainList/FixedWidthItemList';
 
 import { bindActionCreators } from 'redux';
-import { fetchCharacters } from 'actions/data/characterActions'
+import { fetchCharacters, selectCharacter } from 'actions/data/characterActions'
 
 import { connect } from 'react-redux';
 
@@ -15,23 +15,32 @@ const mapCharactersToItemList = (item: any) => ({
 
 class CharacterList extends React.Component {
 	componentDidMount() {
-		this.props.fetchCharacters() //change to use middleware once you have internet
+		this.props.fetchCharacters()
 	}
 
 	render() {
-		return <FixedWidthItemListComponent {...this.props.childProps}/>
+		return (
+			<FixedWidthItemListComponent
+				{...this.props.childProps}
+				selectItem={this.props.selectCharacter}
+			/>
+		)
 	}
 }
 
-const mapStateToProps = (state) => ({
-	childProps: {
-		rawList: state.data.characters.list && state.data.characters.list.map(mapCharactersToItemList),
+const mapStateToProps = (state) => {
+	const { characters } = state.data;
+	return {
+		childProps: {
+			rawList: characters.order && characters.order.map(item => mapCharactersToItemList(characters.obj[item])),
+		}
 	}
-});
+};
 
 const mapDispatchToProps = dispatch => ({
   ...bindActionCreators({
-    fetchCharacters
+		fetchCharacters,
+		selectCharacter
   }, dispatch)
 });
 

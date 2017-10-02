@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 
-import TopBar from 'containers/template/TopBar';
-import TopBarPadding from 'components/template/TopBarPadding';
+
 import SideBar from 'containers/template/SideBar';
 // import ItemList from 'containers/mainList/ItemList'
 import CentreContentWrapper from 'components/template/CentreContentWrapper'
 import Router from 'Router';
-import DetailView from 'components/mainList/DetailView'
+import DetailView from 'containers/mainList/DetailView'
 
 
 export default class App extends Component {
