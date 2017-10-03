@@ -2,6 +2,8 @@ import React from 'react';
 
 import { List } from 'material-ui/List'
 import MarvelListItem from 'components/mainList/ListItem'
+// import Infinite from 'react-infinite'
+import ReactList from 'react-list';
 
 export type PropsType = {
   rawList: Array<{
@@ -27,14 +29,38 @@ const getList = (list, loading: boolean, selectItem) => {
     }
   }
 }
+ 
+export default class ItemList extends React.Component<PropsType> {
+  constructor(props) {
+    super(props)
+    this.renderItem = this._renderItem.bind(this)
+  }
 
-export default ({ rawList, loading, selectItem }: PropsType) => {
-  const list = getList(rawList, loading, selectItem)
-  return (
-    <List
-      cols={Math.floor(document.body.clientWidth/180)}
-    >
-      {list}
-    </List>
-  )
+  _renderItem(index, key) {
+    
+    if (index === this.props.rawList.length - 1) {
+      this.props.fetchMoreFunc(20)
+    }
+
+    const item = this.props.rawList[index]
+    return <MarvelListItem key={item.id} {...item} selectItem={this.props.selectItem} />;
+  }
+
+  render() {
+    const { rawList, loading, selectItem } = this.props
+    const list = getList(rawList, loading, selectItem)
+
+    if (rawList != null) {
+      return (
+        <ReactList
+          itemRenderer={this.renderItem}
+          length={rawList.length}
+          type='uniform'
+          threshold={300}
+        />
+      )
+    } else {
+      return null
+    }
+  }
 }
