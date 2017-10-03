@@ -23,6 +23,7 @@ class CharacterList extends React.Component {
 			<FixedWidthItemListComponent
 				{...this.props.childProps}
 				selectItem={this.props.selectCharacter}
+				fetchMoreFunc={this.props.fetchCharacters}
 			/>
 		)
 	}
