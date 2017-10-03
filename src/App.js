@@ -5,7 +5,7 @@ import SideBar from 'containers/template/SideBar';
 // import ItemList from 'containers/mainList/ItemList'
 import CentreContentWrapper from 'components/template/CentreContentWrapper'
 import Router from 'Router';
-import DetailView from 'containers/mainList/DetailView'
+import DetailView from 'containers/mainDetailView/DetailView'
 
 
 export default class App extends Component {
