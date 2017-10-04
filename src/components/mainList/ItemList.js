@@ -35,14 +35,14 @@ export default class ItemList extends React.Component<PropsType> {
     super(props)
     this.renderItem = this._renderItem.bind(this)
   }
-
+  
   _renderItem(index, key) {
     
     if (index === this.props.rawList.length - 1) {
       this.props.fetchMoreFunc(20)
     }
 
-    const item = this.props.rawList[index]
+    const item = this.props.rawList[index];
     return <MarvelListItem key={item.id} {...item} selectItem={this.props.selectItem} />;
   }
 
