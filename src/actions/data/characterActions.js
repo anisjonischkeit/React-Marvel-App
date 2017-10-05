@@ -28,14 +28,14 @@ export const setCharactersLoadingStatus = (loading: boolean) => ({
 	loading
 })
 
-const fetchCharacters = (actionCreator) => async (dispatch, getState) => {
+const fetchCharacters = (actionCreator, offset = 0) => async (dispatch, getState) => {
 	const currCharacters = getState().data.characters
 	
 	if (!currCharacters.loading) {
 		dispatch(setCharactersLoadingStatus(true))
 
 		const params = {
-			offset: (currCharacters.order || []).length
+			offset: offset
 		}
 
 		const characters = (await marvelFetch('https://gateway.marvel.com:443/v1/public/characters', params)).results
@@ -59,7 +59,8 @@ export const fetchInitialCharacters = () => (dispatch, getState) => {
 }
 
 export const fetchMoreCharacters = () => (dispatch, getState) => {
-	dispatch(fetchCharacters(addCharacters))
+	const currCharacters = getState().data.characters
+	dispatch(fetchCharacters(addCharacters, (currCharacters.order || []).length))
 }
 
 	// export const fetchCharacters = (offset: number) => (dispatch, getState) => {
