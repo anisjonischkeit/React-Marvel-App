@@ -14,7 +14,7 @@ export default class ListItem extends React.Component {
     return (
       <MaterialListItem
         key={this.props.id}
-        leftAvatar={<Avatar src={this.props.img} />}
+        leftAvatar={this.props.img && <Avatar src={this.props.img} />}
         primaryText={this.props.heading}
         secondaryText={
           <p>
