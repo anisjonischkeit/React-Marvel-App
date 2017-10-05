@@ -63,7 +63,7 @@ export const fetchInitialData = (dataName) => (dispatch, getState) => {
 }
 
 export const fetchMoreData = (dataName) => (dispatch, getState) => {
-	const currCharacters = getState().data.characters
+	const currCharacters = getState().data[dataName]
 	dispatch(fetchData(dataName, addData, (currCharacters.order || []).length))
 }
 
