@@ -2,11 +2,18 @@ import marvelFetch from 'utils/marvelFetch'
 
 
 export const GET_CHARACTERS = 'GET_CHARACTERS';
+export const ADD_CHARACTERS = 'ADD_CHARACTERS';
 export const SET_CHARACTER_LOADING_STATUS = 'SET_CHARACTER_LOADING_STATUS';
 export const SELECT_CHARACTER = 'SELECT_CHARACTER';
 
 export const getCharacters = (characterObj: any, characterOrder: Array<string>) => ({
 	type: GET_CHARACTERS,
+	characterObj,
+	characterOrder
+})
+
+export const addCharacters = (characterObj: any, characterOrder: Array<string>) => ({
+	type: ADD_CHARACTERS,
 	characterObj,
 	characterOrder
 })
@@ -21,11 +28,17 @@ export const setCharactersLoadingStatus = (loading: boolean) => ({
 	loading
 })
 
-export const fetchCharacters = (offset: number) => async (dispatch, getState) => {
-	if (!getState().data.characters.loading) {
+const fetchCharacters = (actionCreator) => async (dispatch, getState) => {
+	const currCharacters = getState().data.characters
+	
+	if (!currCharacters.loading) {
 		dispatch(setCharactersLoadingStatus(true))
 
-		const characters = (await marvelFetch('https://gateway.marvel.com:443/v1/public/characters')).results
+		const params = {
+			offset: (currCharacters.order || []).length
+		}
+
+		const characters = (await marvelFetch('https://gateway.marvel.com:443/v1/public/characters', params)).results
 		
 		let characterObj = {};
 		let charOrder = [];
@@ -35,10 +48,18 @@ export const fetchCharacters = (offset: number) => async (dispatch, getState) =>
 			charOrder.push(char.id)
 		})
 
-		dispatch(getCharacters(characterObj, charOrder))
+		dispatch(actionCreator(characterObj, charOrder))
 		dispatch(setCharactersLoadingStatus(false))
 	}
 
+}
+
+export const fetchInitialCharacters = () => (dispatch, getState) => {
+	dispatch(fetchCharacters(getCharacters))
+}
+
+export const fetchMoreCharacters = () => (dispatch, getState) => {
+	dispatch(fetchCharacters(addCharacters))
 }
 
 	// export const fetchCharacters = (offset: number) => (dispatch, getState) => {

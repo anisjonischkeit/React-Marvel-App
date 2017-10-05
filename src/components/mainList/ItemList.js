@@ -39,7 +39,7 @@ export default class ItemList extends React.Component<PropsType> {
   _renderItem(index, key) {
     
     if (index === this.props.rawList.length - 1) {
-      this.props.fetchMoreFunc(20)
+      this.props.fetchMoreFunc()
     }
 
     const item = this.props.rawList[index];

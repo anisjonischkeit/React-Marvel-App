@@ -2,7 +2,7 @@ import * as React from 'react';
 import FixedWidthItemListComponent from 'components/mainList/FixedWidthItemList';
 
 import { bindActionCreators } from 'redux';
-import { fetchCharacters, selectCharacter } from 'actions/data/characterActions'
+import { fetchInitialCharacters, fetchMoreCharacters, selectCharacter } from 'actions/data/characterActions'
 
 import { connect } from 'react-redux';
 
@@ -15,7 +15,7 @@ const mapCharactersToItemList = (item: any) => ({
 
 class CharacterList extends React.Component {
 	componentDidMount() {
-		this.props.fetchCharacters()
+		this.props.fetchInitialCharacters()
 	}
 
 	render() {
@@ -23,7 +23,7 @@ class CharacterList extends React.Component {
 			<FixedWidthItemListComponent
 				{...this.props.childProps}
 				selectItem={this.props.selectCharacter}
-				fetchMoreFunc={this.props.fetchCharacters}
+				fetchMoreFunc={this.props.fetchMoreCharacters}
 			/>
 		)
 	}
@@ -40,7 +40,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => ({
   ...bindActionCreators({
-		fetchCharacters,
+		fetchInitialCharacters,
+		fetchMoreCharacters,
 		selectCharacter
   }, dispatch)
 });

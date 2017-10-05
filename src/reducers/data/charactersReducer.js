@@ -1,6 +1,7 @@
 import type { ActionsType } from 'types/redux'
 import { 
 	GET_CHARACTERS, 
+	ADD_CHARACTERS, 
 	SET_CHARACTER_LOADING_STATUS,
 	SELECT_CHARACTER
 } from 'actions/data/characterActions'
@@ -26,6 +27,12 @@ export default (state: StateType = initialState, action : ActionsType) => {
 				...state,
 				obj: action.characterObj,
 				order: action.characterOrder
+			}
+		case ADD_CHARACTERS:
+			return {
+				...state,
+				obj: {...state.obj, ...action.characterObj},
+				order: [...state.order, ...action.characterOrder]
 			}
 		case SET_CHARACTER_LOADING_STATUS:
 			return {
