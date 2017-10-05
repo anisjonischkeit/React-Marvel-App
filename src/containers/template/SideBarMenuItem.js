@@ -16,11 +16,11 @@ type PropsType = {
 	link: string
 }
 
-export default withRouter(({ text, leftIcon, link, history }: PropsType) => (
+export default withRouter(({ text, leftIcon, link, location, history }: PropsType) => (
 	<MenuItem
 		text={text}
 		leftIcon={leftIcon}
-		link={link}
+		active={link === location.pathname}
 		onClick={() => onClickHandler(link, history)}
 	/>
 ))

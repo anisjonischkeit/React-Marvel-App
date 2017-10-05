@@ -12,15 +12,15 @@ type PropsType = {
 	text: MenuItemDataType
 };
 
-export default withRouter(({ text, link, leftIcon, onClick, location }: PropsType) => (
+export default ({ text, active, leftIcon, onClick }: PropsType) => (
   <MenuItem
     key={text}
     onClick={onClick}
     leftIcon={leftIcon}
-    style={location.pathname === link ? {
+    style={active ? {
       backgroundColor: "rgba(0, 0, 0, 0.2)"
     } : undefined}
   >
     {text}
   </MenuItem>
-));
+);
