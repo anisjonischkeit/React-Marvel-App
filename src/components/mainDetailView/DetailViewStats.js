@@ -40,7 +40,7 @@ export default class DetailViewStats extends React.Component {
 						const stat = this.props.stats[key]
 						if (stat.items.length > 0) {
 							return (
-								<Paper style={{width: 350, margin: 10}}>
+								<Paper key={key} style={{width: 350, margin: 10}}>
 									<List>
 										<Subheader style={styles.listHeader}>{key}</Subheader>
 										{this.props.stats[key].items.map(item => (
