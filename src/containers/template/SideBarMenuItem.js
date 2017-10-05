@@ -20,6 +20,7 @@ export default withRouter(({ text, leftIcon, link, history }: PropsType) => (
 	<MenuItem
 		text={text}
 		leftIcon={leftIcon}
+		link={link}
 		onClick={() => onClickHandler(link, history)}
 	/>
 ))
