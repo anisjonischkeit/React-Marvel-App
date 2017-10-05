@@ -16,6 +16,10 @@ type DataType = {
 export type StateType = {
 	characters: ?DataType,
 	comics: ?DataType,
+	creators: ?DataType,
+	events: ?DataType,
+	series: ?DataType,
+	stories: ?DataType,
 }
 
 const initialDataObj = {
@@ -28,6 +32,10 @@ const initialDataObj = {
 const initialState = {
 	characters: {...initialDataObj},
 	comics: {...initialDataObj},
+	creators: {...initialDataObj},
+	events: {...initialDataObj},
+	series: {...initialDataObj},
+	stories: {...initialDataObj},
 }
 
 export default (state: StateType = initialState, action : ActionsType) => {
