@@ -21,7 +21,7 @@ const menuItems = [
   {text: 'Creators', link: '/creators', leftIcon: <CreatorsIcon />},
   {text: 'Events', link: '/events', leftIcon: <EventsIcon />},
   {text: 'Series', link: '/series', leftIcon: <SeriesIcon />},
-  {text: 'Stories', link: '/stories', leftIcon: <StoriesIcon />},
+  // {text: 'Stories', link: '/stories', leftIcon: <StoriesIcon />},
 ]
 
 const mapStateToProps = (state/*: State*/) => ({
