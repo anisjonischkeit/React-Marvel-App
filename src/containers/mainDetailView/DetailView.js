@@ -36,7 +36,7 @@ const DetailViewContainer = props => {
 			<DetailViewComponent
 				title={selected.name}
 				subtitle={selected.id}
-				img={`${selected.thumbnail.path}standard_small${selected.thumbnail.extension}`}
+				img={`${selected.thumbnail.path}/landscape_incredible.${selected.thumbnail.extension}`}
 				description={descriptionWithStats}
 			/>
 		)

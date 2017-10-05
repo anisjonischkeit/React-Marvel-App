@@ -7,19 +7,13 @@ import FlatButton from 'material-ui/FlatButton';
 
 export default (props) => (
 	<Card className='detailView' >
-		<CardHeader
-			title={props.title}
-			subtitle={props.subtitle}
-			avatar={props.img}
-		/>
+
 		<CardMedia
 			overlay={<CardTitle title={props.title} subtitle={props.subtitle} />}
 		>
 			<img src={props.img} alt={props.title} />
-			</CardMedia>
-			<CardTitle title={props.title} subtitle={props.subtitle} />
-			
-			{props.description}
-
+		</CardMedia>
+		
+		{props.description}
 	</Card>
 )
