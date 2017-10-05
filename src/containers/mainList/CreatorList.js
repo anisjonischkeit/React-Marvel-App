@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 const mapCharactersToItemList = (item: any) => ({
 	id: item.id,
 	img: `${item.thumbnail.path}/standard_medium.${item.thumbnail.extension}`,
-	heading: item.firstName + (item.middleName ? ` ${item.middleName}` : '') + (item.lastName ? ` ${item.lastName}` : ''),
+	heading: item.fullName,
 	subheading: item.id
 })
 

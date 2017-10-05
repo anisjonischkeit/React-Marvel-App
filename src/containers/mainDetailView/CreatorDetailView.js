@@ -35,7 +35,7 @@ const DetailViewContainer = props => {
 
 		return (
 			<DetailViewComponent
-				title={selected.firstName + (selected.middleName ? ` ${selected.middleName}` : '') + (selected.lastName ? ` ${selected.lastName}` : '')}
+				title={selected.fullName}
 				subtitle={selected.id}
 				img={`${selected.thumbnail.path}/landscape_incredible.${selected.thumbnail.extension}`}
 				description={descriptionWithStats}
