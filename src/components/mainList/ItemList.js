@@ -55,7 +55,7 @@ export default class ItemList extends React.Component<PropsType> {
         <ReactList
           itemRenderer={this.renderItem}
           length={rawList.length}
-          type='uniform'
+          type='variable'
           threshold={300}
         />
       )
