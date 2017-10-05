@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import { BrowserRouter } from 'react-router-dom';
 
 import SideBar from 'containers/template/SideBar';
 // import ItemList from 'containers/mainList/ItemList'
@@ -11,15 +11,17 @@ import DetailView from 'containers/mainDetailView/DetailView'
 export default class App extends Component {
   render() {
     return (
-      <div>
-        <SideBar />
-        <CentreContentWrapper>
-          {/*<TopBar />
-          <TopBarPadding />*/}
-          <Router />
-          <DetailView />
-        </CentreContentWrapper>
-      </div>
+      <BrowserRouter>
+        <div>
+          <SideBar />
+          <CentreContentWrapper>
+            {/*<TopBar />
+            <TopBarPadding />*/}
+            <Router />
+            <DetailView />
+          </CentreContentWrapper>
+        </div>
+      </BrowserRouter>
     );
   }
 }
