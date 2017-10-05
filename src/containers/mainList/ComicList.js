@@ -6,11 +6,12 @@ import { fetchInitialData, fetchMoreData, selectDataItem } from 'actions/data/ch
 
 import { connect } from 'react-redux';
 
-const mapCharactersToItemList = (item: any) => ({
+const mapCharactersToItemList = (item: any, activeId) => ({
 	id: item.id,
 	img: `${item.thumbnail.path}/standard_medium.${item.thumbnail.extension}`,
 	heading: item.title,
-	subheading: item.id
+	subheading: item.id,
+	active: item.id === activeId
 })
 
 class ComicList extends React.Component {
@@ -40,7 +41,7 @@ const mapStateToProps = (state) => {
 	const { comics } = state.data;
 	return {
 		childProps: {
-			rawList: comics.order && comics.order.map(item => mapCharactersToItemList(comics.obj[item]))
+			rawList: comics.order && comics.order.map(item => mapCharactersToItemList(comics.obj[item], comics.selectedId))
 		}
 	};
 };

@@ -6,11 +6,12 @@ import { fetchInitialData, fetchMoreData, selectDataItem } from 'actions/data/ch
 
 import { connect } from 'react-redux';
 
-const mapCharactersToItemList = (item: any) => ({
+const mapCharactersToItemList = (item: any, activeId) => ({
 	id: item.id,
 	img: `${item.thumbnail.path}/standard_medium.${item.thumbnail.extension}`,
 	heading: item.name,
-	subheading: item.id
+	subheading: item.id,
+	active: item.id === activeId
 })
 
 class CharacterList extends React.Component {
@@ -40,7 +41,7 @@ const mapStateToProps = (state) => {
 	const { characters } = state.data;
 	return {
 		childProps: {
-			rawList: characters.order && characters.order.map(item => mapCharactersToItemList(characters.obj[item])),
+			rawList: characters.order && characters.order.map(item => mapCharactersToItemList(characters.obj[item], characters.selectedId)),
 		}
 	}
 };

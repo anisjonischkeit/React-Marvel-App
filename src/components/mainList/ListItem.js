@@ -14,6 +14,9 @@ export default class ListItem extends React.Component {
     return (
       <MaterialListItem
         key={this.props.id}
+        style={this.props.active ? {
+          backgroundColor: "rgba(0, 0, 0, 0.2)"
+        } : undefined}
         leftAvatar={this.props.img && <Avatar src={this.props.img} />}
         primaryText={this.props.heading}
         secondaryText={
