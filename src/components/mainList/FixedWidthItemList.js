@@ -9,7 +9,7 @@ import TextField from 'material-ui/TextField';
 export default (props: PropsType) => (
 	<div className='fixedWidthItemListWrapper'>
 		<TextField
-			floatingLabelText="Search"
+			floatingLabelText={`Search ${props.listName}`}
 			fullWidth
 		/>
 		<div className="fixedWidthItemList" width={props.width}>

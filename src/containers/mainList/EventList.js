@@ -28,6 +28,7 @@ class ComicList extends React.Component {
 		return (
 			<FixedWidthItemListComponent
 				{...this.props.childProps}
+				listName='Events'
 				selectItem={this.selectCreator}
 				fetchMoreFunc={this.fetchMoreData}
 			/>
