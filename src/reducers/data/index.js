@@ -3,14 +3,16 @@ import {
 	SET_DATA, 
 	ADD_DATA, 
 	SET_DATA_LOADING_STATUS,
-	SELECT_DATA_ITEM
+	SELECT_DATA_ITEM,
+	SET_DATA_SEARCH_FIELD
 } from 'actions/data/characterActions'
 
 type DataType = {
 	obj: ?Array<any>,
 	order: ?Array<string>,
 	loading: boolean,
-	selectedId: ?number
+	selectedId: ?number,
+	searchField: ?string
 }
 
 export type StateType = {
@@ -26,7 +28,8 @@ const initialDataObj = {
 	obj: null,
 	order: null,
 	loading: false,
-	selectedId: null
+	selectedId: null,
+	params: {}
 }
 
 const initialState = {
@@ -44,17 +47,26 @@ export default (state: StateType = initialState, action : ActionsType) => {
 			return {
 				...state,
 				[action.dataName]: {
+					...state[action.dataName],
 					obj: action.characterObj,
 					order: action.characterOrder
 				}
 			}
 		case ADD_DATA:
+		return {
+			...state,
+			[action.dataName]: {
+				...state[action.dataName],
+				obj: {...state[action.dataName].obj, ...action.characterObj},
+				order: [...state[action.dataName].order, ...action.characterOrder]
+			}
+		}
+		case SET_DATA_SEARCH_FIELD:
 			return {
 				...state,
 				[action.dataName]: {
 					...state[action.dataName],
-					obj: {...state[action.dataName].obj, ...action.characterObj},
-					order: [...state[action.dataName].order, ...action.characterOrder]
+					params: action.params
 				}
 			}
 		case SET_DATA_LOADING_STATUS:

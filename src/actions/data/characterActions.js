@@ -5,6 +5,7 @@ export const SET_DATA = 'SET_DATA';
 export const ADD_DATA = 'ADD_DATA';
 export const SET_DATA_LOADING_STATUS = 'SET_DATA_LOADING_STATUS';
 export const SELECT_DATA_ITEM = 'SELECT_DATA_ITEM';
+export const SET_DATA_SEARCH_FIELD = 'SET_DATA_SEARCH_FIELD';
 
 export const getData = (dataName, characterObj: any, characterOrder: Array<string>) => ({
 	type: SET_DATA,
@@ -20,6 +21,12 @@ export const addData = (dataName, characterObj: any, characterOrder: Array<strin
 	characterOrder
 })
 
+export const setDataRetrievalParams = (dataName, params: {[string]: string}) => ({
+	type: SET_DATA_SEARCH_FIELD,
+	dataName,
+	params
+})
+
 export const selectDataItem = (dataName, characterId: ?number) => ({
 	type: SELECT_DATA_ITEM,
 	dataName,
@@ -32,15 +39,12 @@ export const setDataLoadingStatus = (dataName, loading: boolean) => ({
 	loading
 })
 
-const fetchData = (dataName, actionCreator, offset = 0) => async (dispatch, getState) => {
+const fetchData = (dataName, actionCreator, params = {}) => async (dispatch, getState) => {
+	console.log(params)
 	const currCharacters = getState().data[dataName]
 	
 	if (!currCharacters.loading) {
 		dispatch(setDataLoadingStatus(dataName, true))
-
-		const params = {
-			offset: offset
-		}
 
 		const characters = (await marvelFetch(`https://gateway.marvel.com:443/v1/public/${dataName}`, params)).results
 		
@@ -59,12 +63,20 @@ const fetchData = (dataName, actionCreator, offset = 0) => async (dispatch, getS
 }
 
 export const fetchInitialData = (dataName) => (dispatch, getState) => {
-	dispatch(fetchData(dataName, getData))
+	const params = getState().data[dataName].params
+	dispatch(fetchData(dataName, getData, params));
 }
 
 export const fetchMoreData = (dataName) => (dispatch, getState) => {
 	const currCharacters = getState().data[dataName]
-	dispatch(fetchData(dataName, addData, (currCharacters.order || []).length))
+	console.log(1, currCharacters)
+	const params = {
+		offset: (currCharacters.order || []).length,
+		...currCharacters.params
+	}
+	console.log(2, params)
+
+	dispatch(fetchData(dataName, addData, params))
 }
 
 	// export const fetchCharacters = (offset: number) => (dispatch, getState) => {
