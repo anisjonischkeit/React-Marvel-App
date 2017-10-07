@@ -30,5 +30,14 @@ export default ({ open, menuItems, setOpenState } : PropsType) => (
     />
     <Divider />
     {menuItems}
+    <div style={{bottom: 0, position: "absolute", width: 256}}>
+      <a href='https://github.com/anisjonischkeit/React-Marvel-App'>
+        <MenuItem 
+          text="GitHub"
+          leftIcon={<img src="/images/github.png" />}
+          style={{ opacity: 0.55 }}
+        />
+      </a>
+    </div>
   </Drawer>
 )
