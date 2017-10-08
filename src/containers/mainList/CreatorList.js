@@ -2,7 +2,7 @@ import * as React from 'react';
 import FixedWidthItemListComponent from 'components/mainList/FixedWidthItemList';
 
 import { bindActionCreators } from 'redux';
-import { fetchInitialData, fetchMoreData, selectDataItem } from 'actions/data/characterActions'
+import { fetchInitialData, fetchMoreData, selectDataItem, setDataRetrievalParams } from 'actions/data/characterActions'
 
 import { connect } from 'react-redux';
 
@@ -19,10 +19,12 @@ class ComicList extends React.Component {
 		super(props)
 		this.fetchMoreData = props.fetchMoreData.bind(this, 'creators')
 		this.selectCreator = props.selectDataItem.bind(this, 'creators')
+		this.setCreatorsSearchField = value => props.setDataRetrievalParams('creators', (value !== '' ? {nameStartsWith: value} : undefined))
+		this.fetchInitialData = props.fetchInitialData.bind(this, 'creators');
 	}
 
 	componentDidMount() {
-		this.props.fetchInitialData('creators')
+		this.fetchInitialData()
 	}
 
 	render() {
@@ -32,6 +34,8 @@ class ComicList extends React.Component {
 				listName='Creators'
 				selectItem={this.selectCreator}
 				fetchMoreFunc={this.fetchMoreData}
+				executeSearch={this.fetchInitialData}
+				onSearchChange={this.setCreatorsSearchField}
 			/>
 		)
 	}
@@ -42,7 +46,8 @@ const mapStateToProps = (state) => {
 	return {
 		childProps: {
 			rawList: creators.order && creators.order.map(item => mapCharactersToItemList(creators.obj[item], creators.selectedId))
-		}
+		},
+		searchField: creators.searchField
 	};
 };
 
@@ -50,7 +55,8 @@ const mapDispatchToProps = dispatch => ({
   ...bindActionCreators({
 		fetchInitialData,
 		fetchMoreData,
-		selectDataItem
+		selectDataItem,
+		setDataRetrievalParams
   }, dispatch)
 });
 
