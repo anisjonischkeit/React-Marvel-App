@@ -46,7 +46,15 @@ const fetchData = (dataName, actionCreator, params = {}) => async (dispatch, get
 	if (!currCharacters.loading) {
 		dispatch(setDataLoadingStatus(dataName, true))
 
-		const characters = (await marvelFetch(`https://gateway.marvel.com:443/v1/public/${dataName}`, params)).results
+		let characters = null
+		try {
+			characters = (await marvelFetch(`https://gateway.marvel.com:443/v1/public/${dataName}`, params)).results
+		} catch(err) {
+			// we are no longer loading so set this variable to false
+			dispatch(setDataLoadingStatus(dataName, false))
+			alert("something went wrong while fetching marvel data")
+			return
+		}
 		
 		let characterObj = {};
 		let charOrder = [];

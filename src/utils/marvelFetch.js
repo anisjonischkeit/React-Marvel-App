@@ -12,6 +12,14 @@ export default (url, queryArgs=[]) => {
 	})
 
 	return fetch(url + authStr + queryStr)
-	.then(res => res.json())
-	.then(jsonRes => jsonRes.data);
+	.then(res => {
+		if (res.ok) {
+			return (
+				res.json()
+				.then(jsonRes => jsonRes.data)
+			);
+		} else {
+			throw 'Failed to fetch'
+		}
+	})
 } 
