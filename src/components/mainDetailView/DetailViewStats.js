@@ -47,6 +47,7 @@ export default class DetailViewStats extends React.Component {
 											<ListItem
 											key={item.resourceURI}
 											primaryText={item.name}
+											onClick={this.props.stats[key].onClickHandler.bind(undefined, item.resourceURI)}
 											/>
 										))}
 										</List>

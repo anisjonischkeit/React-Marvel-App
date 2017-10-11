@@ -4,7 +4,8 @@ import {
 	ADD_DATA, 
 	SET_DATA_LOADING_STATUS,
 	SELECT_DATA_ITEM,
-	SET_DATA_SEARCH_FIELD
+	SET_DATA_SEARCH_FIELD,
+	SET_DATA_FIRST_ITEM
 } from 'actions/data/characterActions'
 
 type DataType = {
@@ -12,7 +13,8 @@ type DataType = {
 	order: ?Array<string>,
 	loading: boolean,
 	selectedId: ?number,
-	searchField: ?string
+	searchField: ?string,
+	firstItem: ?any
 }
 
 export type StateType = {
@@ -29,6 +31,7 @@ const initialDataObj = {
 	order: null,
 	loading: false,
 	selectedId: null,
+	firstItem: null,
 	params: {}
 }
 
@@ -83,6 +86,14 @@ export default (state: StateType = initialState, action : ActionsType) => {
 				[action.dataName]: {
 					...state[action.dataName],
 					selectedId: action.characterId
+				}
+			}
+		case SET_DATA_FIRST_ITEM:
+			return {
+				...state,
+				[action.dataName]: {
+					...state[action.dataName],
+					firstItem: action.item
 				}
 			}
 		default:

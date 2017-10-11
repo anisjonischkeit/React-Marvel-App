@@ -19,7 +19,6 @@ export default class FixedWidthItemList extends React.Component{
 		this.handleSearchKeyPress = e => {
 			const key = e.keyCode
 			if (key === 13) {
-				console.log(13)
 				props.executeSearch()
 			}
 		}

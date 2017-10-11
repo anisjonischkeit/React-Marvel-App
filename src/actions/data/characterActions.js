@@ -6,41 +6,47 @@ export const ADD_DATA = 'ADD_DATA';
 export const SET_DATA_LOADING_STATUS = 'SET_DATA_LOADING_STATUS';
 export const SELECT_DATA_ITEM = 'SELECT_DATA_ITEM';
 export const SET_DATA_SEARCH_FIELD = 'SET_DATA_SEARCH_FIELD';
+export const SET_DATA_FIRST_ITEM = 'SET_DATA_FIRST_ITEM';
 
-export const getData = (dataName, characterObj: any, characterOrder: Array<string>) => ({
+export const getData = (dataName: string, characterObj: any, characterOrder: Array<string>) => ({
 	type: SET_DATA,
 	dataName,
 	characterObj,
 	characterOrder
 })
 
-export const addData = (dataName, characterObj: any, characterOrder: Array<string>) => ({
+export const addData = (dataName: string, characterObj: any, characterOrder: Array<string>) => ({
 	type: ADD_DATA,
 	dataName,
 	characterObj,
 	characterOrder
 })
 
-export const setDataRetrievalParams = (dataName, params: {[string]: string}) => ({
+export const setDataRetrievalParams = (dataName: string, params: {[string]: string}) => ({
 	type: SET_DATA_SEARCH_FIELD,
 	dataName,
 	params
 })
 
-export const selectDataItem = (dataName, characterId: ?number) => ({
+export const setDataFirstItem = (dataName: string, item: object) => ({
+	type: SET_DATA_FIRST_ITEM,
+	dataName,
+	item
+})
+
+export const selectDataItem = (dataName: string, characterId: ?number) => ({
 	type: SELECT_DATA_ITEM,
 	dataName,
 	characterId
 })
 
-export const setDataLoadingStatus = (dataName, loading: boolean) => ({
+export const setDataLoadingStatus = (dataName: string, loading: boolean) => ({
 	type: SET_DATA_LOADING_STATUS,
 	dataName,
 	loading
 })
 
-const fetchData = (dataName, actionCreator, params = {}) => async (dispatch, getState) => {
-	console.log(params)
+const fetchData = (dataName: string, actionCreator, params = {}) => async (dispatch, getState) => {
 	const currCharacters = getState().data[dataName]
 	
 	if (!currCharacters.loading) {
@@ -70,21 +76,39 @@ const fetchData = (dataName, actionCreator, params = {}) => async (dispatch, get
 
 }
 
-export const fetchInitialData = (dataName) => (dispatch, getState) => {
+export const fetchInitialData = (dataName: string) => (dispatch, getState) => {
 	const params = getState().data[dataName].params
 	dispatch(fetchData(dataName, getData, params));
 }
 
-export const fetchMoreData = (dataName) => (dispatch, getState) => {
+export const fetchMoreData = (dataName: string) => (dispatch, getState) => {
 	const currCharacters = getState().data[dataName]
-	console.log(1, currCharacters)
+
 	const params = {
 		offset: (currCharacters.order || []).length,
 		...currCharacters.params
 	}
-	console.log(2, params)
 
 	dispatch(fetchData(dataName, addData, params))
+}
+
+export const fetchIndividualDataItem = (dataName: string, resourceURI: string) => async (dispatch, getState) => {
+	let firstItemList = null
+	try {
+		firstItemList = (await marvelFetch(resourceURI)).results
+	} catch(err) {
+		// we are no longer loading so set this variable to false
+		dispatch(setDataLoadingStatus(dataName, false))
+		alert("something went wrong while fetching marvel data")
+		return
+	}
+	if (firstItemList.length !== 1) {
+		alert(`could not load resource at ${resourceURI}`)
+		throw 'Could not load resource error'
+	}
+
+	dispatch(setDataFirstItem(dataName, firstItemList[0]))
+	dispatch(selectDataItem(dataName, firstItemList[0].id))
 }
 
 	// export const fetchCharacters = (offset: number) => (dispatch, getState) => {
