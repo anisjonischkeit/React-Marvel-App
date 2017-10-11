@@ -43,9 +43,18 @@ class CharacterList extends React.Component {
 
 const mapStateToProps = (state) => {
 	const { characters } = state.data;
+
+	let rawList = undefined
+	if (characters.order) {
+		rawList = characters.order.map(item => mapCharactersToItemList(characters.obj[item], characters.selectedId))
+		if (characters.firstItem) {
+			rawList = [mapCharactersToItemList(characters.firstItem, characters.selectedId), ...rawList]
+		}
+	}
+
 	return {
 		childProps: {
-			rawList: characters.order && characters.order.map(item => mapCharactersToItemList(characters.obj[item], characters.selectedId)),
+			rawList
 		},
 		searchField: characters.searchField
 	}

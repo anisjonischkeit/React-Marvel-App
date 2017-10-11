@@ -5,8 +5,8 @@ import DetailViewStats from 'components/mainDetailView/DetailViewStats';
 import { CardText } from 'material-ui/Card';
 import { withRouter } from 'react-router-dom'
 
-// import { bindActionCreators } from 'redux';
-// import { fetchCharacters } from 'actions/data/characterActions'
+import { bindActionCreators } from 'redux';
+import { fetchIndividualDataItem } from 'actions/data/characterActions'
 
 import { connect } from 'react-redux';
 
@@ -68,7 +68,13 @@ const mapStateToProps = state => {
 	}
 }
 
-export default connect(mapStateToProps)(DetailViewContainer)
+const mapDispatchToProps = dispatch => ({
+  ...bindActionCreators({
+		fetchIndividualDataItem
+  }, dispatch)
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(DetailViewContainer)
 
 
 /*
