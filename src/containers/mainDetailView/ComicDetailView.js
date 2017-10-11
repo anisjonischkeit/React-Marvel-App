@@ -38,7 +38,7 @@ const DetailViewContainer = withRouter(props => {
 					stats={{
 						creators: {...selected.creators, onClickHandler: onClickHandler.bind(null, 'creators')},
 						characters: {...selected.characters, onClickHandler: onClickHandler.bind(null, 'characters')},
-						stories: {...selected.stories, onClickHandler: onClickHandler.bind(null, 'stories')},
+						// stories: {...selected.stories, onClickHandler: onClickHandler.bind(null, 'stories')},
 						events: {...selected.events, onClickHandler: onClickHandler.bind(null, 'events')},
 
 					}}

@@ -40,7 +40,7 @@ const DetailViewContainer = withRouter(props => {
 					stats={{
 						comics: {...selected.comics, onClickHandler: onClickHandler.bind(null, 'comics')},
 						series: {...selected.series, onClickHandler: onClickHandler.bind(null, 'series')},
-						stories: {...selected.stories, onClickHandler: onClickHandler.bind(null, 'stories')},
+						// stories: {...selected.stories, onClickHandler: onClickHandler.bind(null, 'stories')},
 						events: {...selected.events, onClickHandler: onClickHandler.bind(null, 'events')}
 					}}
 					defaultStat='comics'

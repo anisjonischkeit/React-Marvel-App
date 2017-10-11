@@ -3,16 +3,31 @@ import DetailViewComponent from 'components/mainDetailView/DetailView';
 import DetailViewStats from 'components/mainDetailView/DetailViewStats';
 
 import { CardText } from 'material-ui/Card';
+import { withRouter } from 'react-router-dom'
 
-// import { bindActionCreators } from 'redux';
-// import { fetchCharacters } from 'actions/data/characterActions'
+import { bindActionCreators } from 'redux';
+import { fetchIndividualDataItem } from 'actions/data/characterActions'
 
 import { connect } from 'react-redux';
 
-const DetailViewContainer = props => {
-	if (props.selectedId) {
-		const selected = props.charactersObj[props.selectedId];
+const DetailViewContainer = withRouter(props => {
+
+	const onClickHandler = (dataName, resourceURI) => {
+		props.fetchIndividualDataItem(dataName, resourceURI)
+		props.history.push(`/${dataName}`)
+	}
+
+	if (props.selectedId && props.charactersObj) {
+		let selected = props.charactersObj[props.selectedId];
 		
+		if (selected == null) {
+			if (props.firstItem && props.selectedId === props.firstItem.id) {
+				selected = props.firstItem
+			} else {
+				return null
+			}
+		}
+
 		const descriptionWithStats = (
 			<div>
 				<CardText>
@@ -21,11 +36,11 @@ const DetailViewContainer = props => {
 				
 				<DetailViewStats
 					stats={{
-						creators: selected.creators,
-						characters: selected.characters,
-						stories: selected.stories,
-						events: selected.events,
-						comics: selected.comics,
+						characters: {...selected.characters, onClickHandler: onClickHandler.bind(null, 'characters')},
+						creators: {...selected.creators, onClickHandler: onClickHandler.bind(null, 'creators')},
+						// stories: {...selected.stories, onClickHandler: onClickHandler.bind(null, 'stories')},
+						events: {...selected.events, onClickHandler: onClickHandler.bind(null, 'events')},
+						comics: {...selected.comics, onClickHandler: onClickHandler.bind(null, 'comics')},
 
 					}}
 					defaultStat='comics'
@@ -44,16 +59,23 @@ const DetailViewContainer = props => {
 		)
 	}
 	return null
-}
+})
 
 const mapStateToProps = state => {
 	return {
 		selectedId: state.data.series.selectedId,
-		charactersObj: state.data.series.obj
+		charactersObj: state.data.series.obj,
+		firstItem: state.data.series.firstItem
 	}
 }
 
-export default connect(mapStateToProps)(DetailViewContainer)
+const mapDispatchToProps = dispatch => ({
+  ...bindActionCreators({
+		fetchIndividualDataItem
+  }, dispatch)
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(DetailViewContainer)
 
 
 /*

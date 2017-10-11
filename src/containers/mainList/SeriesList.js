@@ -43,9 +43,18 @@ class ComicList extends React.Component {
 
 const mapStateToProps = (state) => {
 	const { series } = state.data;
+
+	let rawList = undefined
+	if (series.order) {
+		rawList = series.order.map(item => mapCharactersToItemList(series.obj[item], series.selectedId))
+		if (series.firstItem) {
+			rawList = [mapCharactersToItemList(series.firstItem, series.selectedId), ...rawList]
+		}
+	}
+
 	return {
 		childProps: {
-			rawList: series.order && series.order.map(item => mapCharactersToItemList(series.obj[item], series.selectedId))
+			rawList
 		},
 		searchField: series.searchField
 	};
