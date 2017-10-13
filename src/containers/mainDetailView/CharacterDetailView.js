@@ -51,6 +51,7 @@ const DetailViewContainer = withRouter(props => {
 
 		return (
 			<DetailViewComponent
+				onBackClick={props.onBackClick}
 				title={selected.name}
 				subtitle={selected.id}
 				img={`${selected.thumbnail.path}/landscape_incredible.${selected.thumbnail.extension}`}

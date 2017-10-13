@@ -8,13 +8,19 @@ import { bindActionCreators } from 'redux';
 import { selectDataItem } from 'actions/data/characterActions';
 
 class MasterDetailSwitcher extends React.Component {
+	constructor(props) {
+		super(props)
+		this.selectDataItem = props.selectDataItem.bind(this, props.reduxEntryPointName, null)
+	}
 	render() {
 		console.log(this.props.selectedId)
 		const viewableContent = (
 			<div>
 				<MediaQuery query="(max-width: 960px)">
 					{this.props.selectedId ? 
-						<this.props.detailComponent />
+						<this.props.detailComponent
+							onBackClick={this.selectDataItem}
+						/>
 						:
 						<this.props.masterComponent />
 					}

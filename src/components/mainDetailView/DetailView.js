@@ -8,7 +8,7 @@ import FlatButton from 'material-ui/FlatButton';
 import Detail from 'components/masterDetail/Detail'
 
 export default (props) => (
-	<Detail>
+	<Detail onBackClick={props.onBackClick}>
 		<Card>
 
 			<CardMedia
