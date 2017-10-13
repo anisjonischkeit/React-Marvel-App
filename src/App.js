@@ -5,8 +5,6 @@ import SideBar from 'containers/template/SideBar';
 // import ItemList from 'containers/mainList/ItemList'
 import CentreContentWrapper from 'components/template/CentreContentWrapper'
 import Router from 'Router';
-import DetailView from 'containers/mainDetailView/DetailView'
-
 
 export default class App extends Component {
   render() {
@@ -18,7 +16,6 @@ export default class App extends Component {
             {/*<TopBar />
             <TopBarPadding />*/}
             <Router />
-            <DetailView />
           </CentreContentWrapper>
         </div>
       </BrowserRouter>

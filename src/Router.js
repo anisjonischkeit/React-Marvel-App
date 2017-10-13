@@ -4,8 +4,6 @@ import { Switch, Route, Redirect } from 'react-router';
 
 import MasterDetailSwitcher from 'containers/MasterDetailSwitcher'
 
-import DetailView from 'containers/mainDetailView/DetailView'
-
 import CharacterMaster from 'containers/mainList/CharacterList';
 import CharacterDetail from 'containers/mainDetailView/CharacterDetailView';
 
@@ -32,36 +30,42 @@ export default () => (
         <MasterDetailSwitcher
           masterComponent={CharacterMaster}
           detailComponent={CharacterDetail}
+          reduxEntryPointName='characters'
         />
       </Route>
       <Route exact path='/comics'>
         <MasterDetailSwitcher
           masterComponent={ComicMaster}
           detailComponent={ComicDetail}
+          reduxEntryPointName='comics'
         />
       </Route>
       <Route exact path='/creators'>
         <MasterDetailSwitcher
           masterComponent={CreatorMaster}
           detailComponent={CreatorDetail}
+          reduxEntryPointName='creators'
         />
       </Route>
       <Route exact path='/events'>
         <MasterDetailSwitcher
           masterComponent={EventMaster}
           detailComponent={EventDetail}
+          reduxEntryPointName='events'
         />
       </Route>
       <Route exact path='/series'>
         <MasterDetailSwitcher
           masterComponent={SeriesMaster}
           detailComponent={SeriesDetail}
+          reduxEntryPointName='series'
         />
       </Route>
       <Route exact path='/stories'>
         <MasterDetailSwitcher
           masterComponent={StoryMaster}
           detailComponent={StoryDetail}
+          reduxEntryPointName='stories'
         />
       </Route>
     </Switch>
