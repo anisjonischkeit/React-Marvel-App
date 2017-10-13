@@ -1,0 +1,19 @@
+.masterView {
+	width: 400px;
+	float: left;
+}
+
+.masterViewTopBar {
+	display: none !important;
+}
+
+@media only screen and (max-width: 960px) {
+	.masterView {
+		width: 100%;
+		float: none;
+	}
+
+	.masterViewTopBar {
+		display: flex !important;
+	}
+}

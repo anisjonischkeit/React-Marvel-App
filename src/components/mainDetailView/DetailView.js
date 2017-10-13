@@ -5,15 +5,19 @@ import './DetailView.css';
 import { Card, CardActions, CardHeader, CardMedia, CardTitle, CardText } from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
 
-export default (props) => (
-	<Card className='detailView' >
+import Detail from 'components/masterDetail/Detail'
 
-		<CardMedia
-			overlay={<CardTitle title={props.title} subtitle={props.subtitle} />}
-		>
-			<img src={props.img} alt={props.title} />
-		</CardMedia>
-		
-		{props.description}
-	</Card>
+export default (props) => (
+	<Detail>
+		<Card>
+
+			<CardMedia
+				overlay={<CardTitle title={props.title} subtitle={props.subtitle} />}
+			>
+				<img src={props.img} alt={props.title} />
+			</CardMedia>
+			
+			{props.description}
+		</Card>
+	</Detail>
 )
