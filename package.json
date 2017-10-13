@@ -4,7 +4,8 @@
   "private": true,
   "licence": "MIT",
   "devDependencies": {
-    "cross-env": "^5.0.5"
+    "cross-env": "^5.0.5",
+    "gh-pages": "^1.0.0"
   },
   "dependencies": {
     "material-ui": "^0.19.2",
@@ -23,6 +24,7 @@
     "start": "cross-env NODE_PATH=./src react-scripts start",
     "build": "cross-env NODE_PATH=./src react-scripts build",
     "test": "cross-env NODE_PATH=./src react-scripts test --env=jsdom",
-    "eject": "cross-env NODE_PATH=./src react-scripts eject"
+    "eject": "cross-env NODE_PATH=./src react-scripts eject",
+    "publish": "yarn run build && node -e \"require('gh-pages').publish('build');\""
   }
 }
