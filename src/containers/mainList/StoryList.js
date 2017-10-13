@@ -1,5 +1,5 @@
 import * as React from 'react';
-import FixedWidthItemListComponent from 'components/mainList/FixedWidthItemList';
+import FixedWidthItemListComponent from 'components/mainList/SideBarItemList';
 
 import { bindActionCreators } from 'redux';
 import { fetchInitialData, fetchMoreData, selectDataItem } from 'actions/data/characterActions'

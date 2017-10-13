@@ -1,5 +1,5 @@
 import * as React from 'react';
-import FixedWidthItemListComponent from 'components/mainList/FixedWidthItemList';
+import FixedWidthItemListComponent from 'components/mainList/SideBarItemList';
 
 import { bindActionCreators } from 'redux';
 import { fetchInitialData, fetchMoreData, selectDataItem, setDataRetrievalParams } from 'actions/data/characterActions'
@@ -17,14 +17,27 @@ const mapCharactersToItemList = (item: any, activeId) => ({
 class ComicList extends React.Component {
 	constructor(props) {
 		super(props)
-		this.fetchMoreData = props.fetchMoreData.bind(this, 'events')
-		this.selectCreator = props.selectDataItem.bind(this, 'events')
+		
+		this.onListScroll = this._onListScroll.bind(this);
+		
+		this.selectEvent = (id) => props.selectDataItem('events', id)
 		this.setEventSearchField = value => props.setDataRetrievalParams('events', (value !== '' ? {nameStartsWith: value} : undefined))
-		this.fetchInitialData = props.fetchInitialData.bind(this, 'events');
+		this.fetchInitialData = () => props.fetchInitialData('events');
+		
 	}
 
 	componentDidMount() {
 		this.fetchInitialData()
+	}
+
+	_onListScroll(el) {
+		const scroll = el.scrollTop
+		const height = el.scrollHeight - el.offsetHeight
+	
+		if (scroll > height - 400) {
+			console.log('fetch more')
+			this.props.fetchMoreData('events')
+		}
 	}
 
 	render() {
@@ -32,8 +45,8 @@ class ComicList extends React.Component {
 			<FixedWidthItemListComponent
 				{...this.props.childProps}
 				listName='Events'
-				selectItem={this.selectCreator}
-				fetchMoreFunc={this.fetchMoreData}
+				selectItem={this.selectEvent}
+				handleScroll={this.onListScroll}				
 				executeSearch={this.fetchInitialData}
 				onSearchChange={this.setEventSearchField}
 			/>

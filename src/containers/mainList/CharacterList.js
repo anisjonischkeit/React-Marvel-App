@@ -1,5 +1,5 @@
 import * as React from 'react';
-import FixedWidthItemListComponent from 'components/mainList/FixedWidthItemList';
+import FixedWidthItemListComponent from 'components/mainList/SideBarItemList';
 
 import { bindActionCreators } from 'redux';
 import { fetchInitialData, fetchMoreData, selectDataItem, setDataRetrievalParams } from 'actions/data/characterActions'
@@ -17,23 +17,35 @@ const mapCharactersToItemList = (item: any, activeId) => ({
 class CharacterList extends React.Component {
 	constructor(props) {
 		super(props)
-		this.fetchMoreData = props.fetchMoreData.bind(this, 'characters')
-		this.selectCharacter = props.selectDataItem.bind(this, 'characters')
+		
+		this.onListScroll = this._onListScroll.bind(this);
+
+		this.selectCharacter = (id) => props.selectDataItem('characters', id)
 		this.setCharacterSearchField = value => props.setDataRetrievalParams('characters', (value !== '' ? {nameStartsWith: value} : undefined))
-		this.fetchInitialData = props.fetchInitialData.bind(this, 'characters');
+		this.fetchInitialData = () => props.fetchInitialData('characters');
 	}
 
 	componentDidMount() {
 		this.fetchInitialData()
 	}
 
+	_onListScroll(el) {
+		const scroll = el.scrollTop
+		const height = el.scrollHeight - el.offsetHeight
+	
+		if (scroll > height - 400) {
+			console.log('fetch more')
+			this.props.fetchMoreData('characters')
+		}
+	}
+
 	render() {
 		return (
 			<FixedWidthItemListComponent
 				{...this.props.childProps}
+				handleScroll={this.onListScroll}
 				listName='Characters'
 				selectItem={this.selectCharacter}
-				fetchMoreFunc={this.fetchMoreData}
 				executeSearch={this.fetchInitialData}
 				onSearchChange={this.setCharacterSearchField}
 			/>

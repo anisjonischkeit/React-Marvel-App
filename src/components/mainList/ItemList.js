@@ -52,12 +52,13 @@ export default class ItemList extends React.Component<PropsType> {
 
     if (rawList != null) {
       return (
-        <ReactList
-          itemRenderer={this.renderItem}
-          length={rawList.length}
-          type='variable'
-          threshold={300}
-        />
+        // <ReactList
+        //   itemRenderer={this.renderItem}
+        //   length={rawList.length}
+        //   type='variable'
+        //   threshold={300}
+        // />
+        list
       )
     } else {
       return null
