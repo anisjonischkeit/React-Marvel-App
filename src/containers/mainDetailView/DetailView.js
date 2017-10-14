@@ -7,10 +7,6 @@ import { fetchIndividualDataItem } from 'actions/data/characterActions'
 import { withRouter } from 'react-router-dom'
 
 import { CardText } from 'material-ui/Card';
-
-// import { bindActionCreators } from 'redux';
-// import { fetchCharacters } from 'actions/data/characterActions'
-
 import { connect } from 'react-redux';
 
 const DetailViewContainer = withRouter(props => {
