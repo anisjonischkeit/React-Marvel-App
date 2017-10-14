@@ -4,7 +4,7 @@ import md5 from 'md5'
 export default (url, queryArgs=[]) => {
 	const ts = Math.floor(Date.now());
 	const hash = md5(ts + marvelApi.privateKey + marvelApi.publicKey)
-	const authStr = `?apikey=${marvelApi.publicKey}&ts=${ts}&hash=${hash}` 
+	const authStr = `?apikey=${marvelApi.publicKey}`
 
 	let queryStr = ""
 	Object.keys(queryArgs).forEach(key => {
