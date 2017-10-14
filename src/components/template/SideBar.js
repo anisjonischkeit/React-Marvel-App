@@ -1,7 +1,7 @@
 // @flow
 
 import * as React from 'react';
-import Drawer from 'material-ui/Drawer';
+import Drawer from 'components/template/Drawer';
 import MenuItem from 'components/template/SideBarMenuItem';
 import Divider from 'material-ui/Divider';
 import BurgerMenu from 'material-ui/svg-icons/navigation/menu'
@@ -15,13 +15,8 @@ type PropsType = {
 
 export default ({ open, menuItems, setOpenState } : PropsType) => (
   <Drawer
-    open={true}
-    docked={!open}
+    open={open}
     onRequestChange={setOpenState}
-    containerStyle={{
-      width: (open ? "256px" : "56px"),
-      overflow: 'hidden'
-    }}
   >
     <MenuItem 
       text="Marvel Universe"

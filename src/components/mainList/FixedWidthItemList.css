@@ -1,8 +1,10 @@
-
-.fixedWidthItemListWrapper {
-}
-
 .fixedWidthItemList {
 	overflow-y: auto;
 	height: calc(100vh - 72px);
+}
+
+@media only screen and (max-width: 960px) {
+	.fixedWidthItemList {
+		height: calc(100vh - 136px);
+	}
 }

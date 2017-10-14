@@ -1,0 +1,12 @@
+.centreContentWrapper {
+	width: calc(100% - 56px);
+	padding-left: 56px;
+	overflow: 'hidden'
+}
+
+@media only screen and (max-width: 960px) {
+	.centreContentWrapper {
+		width: 100%;
+		padding-left: 0;
+	}
+}

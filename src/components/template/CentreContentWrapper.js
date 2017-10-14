@@ -1,11 +1,12 @@
 import * as React from 'react';
+import './CentreContentWrapper.css'
 
 type PropsType = {
 	children: React.Element
 }
 
 export default ({ children }: PropsType) => (
-	<div style={{width: "calc(100% - 56px)", paddingLeft: "56px", overflow: 'hidden'}}>
+	<div className='centreContentWrapper'>
 		{ children }
 	</div>
 )

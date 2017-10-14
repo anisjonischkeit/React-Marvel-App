@@ -13,8 +13,6 @@ export default class App extends Component {
         <div>
           <SideBar />
           <CentreContentWrapper>
-            {/*<TopBar />
-            <TopBarPadding />*/}
             <Router />
           </CentreContentWrapper>
         </div>
