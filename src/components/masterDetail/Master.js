@@ -6,7 +6,7 @@ export default props => (
 	<div className='masterView'>
 		<AppBar
 			className='masterViewTopBar'
-			title="Master"
+			title={props.title}
 			iconClassNameRight="muidocs-icon-navigation-expand-more"
 			onLeftIconButtonTouchTap={props.onMenuClick}
 		/>

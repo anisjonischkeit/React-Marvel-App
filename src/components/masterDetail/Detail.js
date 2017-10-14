@@ -9,7 +9,7 @@ export default props => (
 	<div className='detailView'>
 		<AppBar
 			className='detailViewTopBar'
-			title="Detail"
+			title={props.title}
 			iconElementLeft={<IconButton onClick={props.onBackClick}><BackIcon /></IconButton>}
 			iconClassNameRight="muidocs-icon-action-home"
 		/>

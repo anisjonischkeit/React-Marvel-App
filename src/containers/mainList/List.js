@@ -41,7 +41,10 @@ class List extends React.Component<PropsType> {
 
 	render() {
 		return (
-			<Master onMenuClick={this.props.openSideBar}>
+			<Master
+				title={this.props.displayName}
+				onMenuClick={this.props.openSideBar}
+			>
 				<SideBarItemList
 					{...this.props.childProps}
 					handleScroll={this.onListScroll}

@@ -47,7 +47,10 @@ const DetailViewContainer = withRouter(props => {
 		)
 
 		return (
-			<Detail onBackClick={props.handleBackClick}>
+			<Detail
+				title={props.displayName}
+				onBackClick={props.handleBackClick}
+			>
 				<DetailViewComponent
 					title={selected[props.titleFieldName]}
 					subtitle={selected.id}
