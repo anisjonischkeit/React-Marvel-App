@@ -10,7 +10,6 @@ import { selectDataItem } from 'actions/data/characterActions';
 class MasterDetailSwitcher extends React.Component {
 	constructor(props) {
 		super(props)
-		this.selectDataItem = props.selectDataItem.bind(this, props.reduxEntryPointName, null)
 	}
 	render() {
 		console.log(this.props.selectedId)
@@ -42,7 +41,7 @@ const mapStateToProps = (state, props) => ({
 	selectedId: state.data[props.reduxEntryPointName].selectedId
 })
 
-const mapDispatchToProps = dispath => ({
+const mapDispatchToProps = (dispath, props) => ({
 	...bindActionCreators({
 		selectDataItem
 	}, dispath)

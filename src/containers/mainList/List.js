@@ -1,10 +1,12 @@
 import * as React from 'react';
-import FixedWidthItemListComponent from 'components/mainList/SideBarItemList';
+import SideBarItemList from 'components/mainList/SideBarItemList';
 
 import { bindActionCreators } from 'redux';
 import { fetchInitialData, fetchMoreData, selectDataItem, setDataRetrievalParams } from 'actions/data/characterActions'
+import { openSideBar } from 'actions/template/sidebarActions'
 
 import { connect } from 'react-redux';
+import Master from 'components/masterDetail/Master'
 
 type PropsType = {
 	reduxEntryPointName: string,
@@ -39,14 +41,16 @@ class List extends React.Component<PropsType> {
 
 	render() {
 		return (
-			<FixedWidthItemListComponent
-				{...this.props.childProps}
-				handleScroll={this.onListScroll}
-				listName={this.props.displayName}
-				selectItem={this.selectCharacter}
-				executeSearch={this.fetchInitialData}
-				onSearchChange={this.setCharacterSearchField}
-			/>
+			<Master onMenuClick={this.props.openSideBar}>
+				<SideBarItemList
+					{...this.props.childProps}
+					handleScroll={this.onListScroll}
+					listName={this.props.displayName}
+					selectItem={this.selectCharacter}
+					executeSearch={this.fetchInitialData}
+					onSearchChange={this.setCharacterSearchField}
+				/>
+			</Master>
 		)
 	}
 }
@@ -84,7 +88,8 @@ const mapDispatchToProps = dispatch => ({
 		fetchInitialData,
 		fetchMoreData,
 		selectDataItem,
-		setDataRetrievalParams
+		setDataRetrievalParams,
+		openSideBar
   }, dispatch)
 });
 

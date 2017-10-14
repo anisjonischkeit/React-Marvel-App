@@ -3,11 +3,13 @@ import DetailViewComponent from 'components/mainDetailView/DetailView';
 import DetailViewStats from 'components/mainDetailView/DetailViewStats';
 
 import { bindActionCreators } from 'redux';
-import { fetchIndividualDataItem } from 'actions/data/characterActions'
+import { fetchIndividualDataItem, selectDataItem } from 'actions/data/characterActions'
 import { withRouter } from 'react-router-dom'
 
 import { CardText } from 'material-ui/Card';
 import { connect } from 'react-redux';
+
+import Detail from 'components/masterDetail/Detail'
 
 const DetailViewContainer = withRouter(props => {
 	
@@ -45,13 +47,14 @@ const DetailViewContainer = withRouter(props => {
 		)
 
 		return (
-			<DetailViewComponent
-				onBackClick={props.onBackClick}
-				title={selected[props.titleFieldName]}
-				subtitle={selected.id}
-				img={`${selected.thumbnail.path}/landscape_incredible.${selected.thumbnail.extension}`}
-				description={descriptionWithStats}
-			/>
+			<Detail onBackClick={props.handleBackClick}>
+				<DetailViewComponent
+					title={selected[props.titleFieldName]}
+					subtitle={selected.id}
+					img={`${selected.thumbnail.path}/landscape_incredible.${selected.thumbnail.extension}`}
+					description={descriptionWithStats}
+				/>
+			</Detail>
 		)
 	}
 	return null
@@ -65,9 +68,10 @@ const mapStateToProps = (state, props) => {
 	}
 }
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch, props) => ({
   ...bindActionCreators({
-		fetchIndividualDataItem
+		fetchIndividualDataItem,
+		handleBackClick: () => selectDataItem(props.reduxEntryPointName, null)
   }, dispatch)
 });
 

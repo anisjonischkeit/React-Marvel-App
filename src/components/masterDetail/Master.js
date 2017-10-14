@@ -8,6 +8,7 @@ export default props => (
 			className='masterViewTopBar'
 			title="Master"
 			iconClassNameRight="muidocs-icon-navigation-expand-more"
+			onLeftIconButtonTouchTap={props.onMenuClick}
 		/>
 		{props.children}
 	</div>

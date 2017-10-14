@@ -31,19 +31,17 @@ export default class FixedWidthItemList extends React.Component {
 
 	render() {
 		return (
-			<Master className='masterView'>
-				<div className='fixedWidthItemListWrapper' >
-					<TextField
-						floatingLabelText={`Search ${this.props.listName}`}
-						fullWidth
-						onChange={this.onSearchChange}
-						onKeyDown={this.handleSearchKeyPress}
-					/>
-					<div className="fixedWidthItemList" width={this.props.width} onScroll={this.handleScroll} ref={ref => {this.listElement = ref}}>
-						<ItemList {...this.props} />
-					</div>
-					</div>
-			</Master>
+			<div className='fixedWidthItemListWrapper' >
+				<TextField
+					floatingLabelText={`Search ${this.props.listName}`}
+					fullWidth
+					onChange={this.onSearchChange}
+					onKeyDown={this.handleSearchKeyPress}
+				/>
+				<div className="fixedWidthItemList" width={this.props.width} onScroll={this.handleScroll} ref={ref => {this.listElement = ref}}>
+					<ItemList {...this.props} />
+				</div>
+			</div>
 		)
 	}
 } 
