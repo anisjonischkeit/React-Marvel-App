@@ -17,21 +17,6 @@ const styles = {
 }
 
 export default class DetailViewStats extends React.Component {
-	constructor(props) {
-		super(props)
-		this.state = {
-			stat: props.defaultStat
-		}
-		this.handleStatChange = this._handleStatChange.bind(this)
-	}
-
-	_handleStatChange(e: Event) {
-		const name = e.currentTarget.name
-
-		this.setState(() => ({
-			stat: name
-		}))
-	}
 
 	render() {
 		return (
