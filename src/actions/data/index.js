@@ -8,18 +8,18 @@ export const SELECT_DATA_ITEM = 'SELECT_DATA_ITEM';
 export const SET_DATA_SEARCH_FIELD = 'SET_DATA_SEARCH_FIELD';
 export const SET_DATA_FIRST_ITEM = 'SET_DATA_FIRST_ITEM';
 
-export const getData = (dataName: string, characterObj: any, characterOrder: Array<string>) => ({
+export const getData = (dataName: string, dataObj: any, dataOrder: Array<string>) => ({
 	type: SET_DATA,
 	dataName,
-	characterObj,
-	characterOrder
+	dataObj,
+	dataOrder
 })
 
-export const addData = (dataName: string, characterObj: any, characterOrder: Array<string>) => ({
+export const addData = (dataName: string, dataObj: any, dataOrder: Array<string>) => ({
 	type: ADD_DATA,
 	dataName,
-	characterObj,
-	characterOrder
+	dataObj,
+	dataOrder
 })
 
 export const setDataRetrievalParams = (dataName: string, params: {[string]: string}) => ({
@@ -34,10 +34,10 @@ export const setDataFirstItem = (dataName: string, item: object) => ({
 	item
 })
 
-export const selectDataItem = (dataName: string, characterId: ?number) => ({
+export const selectDataItem = (dataName: string, dataId: ?number) => ({
 	type: SELECT_DATA_ITEM,
 	dataName,
-	characterId
+	dataId
 })
 
 export const setDataLoadingStatus = (dataName: string, loading: boolean) => ({
@@ -47,9 +47,9 @@ export const setDataLoadingStatus = (dataName: string, loading: boolean) => ({
 })
 
 const fetchData = (dataName: string, actionCreator, params = {}) => async (dispatch, getState) => {
-	const currCharacters = getState().data[dataName]
+	const currData = getState().data[dataName]
 	
-	if (!currCharacters.loading) {
+	if (!currData.loading) {
 		dispatch(setDataLoadingStatus(dataName, true))
 
 		let characters = null
@@ -62,15 +62,15 @@ const fetchData = (dataName: string, actionCreator, params = {}) => async (dispa
 			return
 		}
 		
-		let characterObj = {};
-		let charOrder = [];
+		let dataObj = {};
+		let dataOrder = [];
 
 		characters.forEach(char => {
-			characterObj[char.id] = char
-			charOrder.push(char.id)
+			dataObj[char.id] = char
+			dataOrder.push(char.id)
 		})
 
-		dispatch(actionCreator(dataName, characterObj, charOrder))
+		dispatch(actionCreator(dataName, dataObj, dataOrder))
 		dispatch(setDataLoadingStatus(dataName, false))
 	}
 
@@ -82,11 +82,11 @@ export const fetchInitialData = (dataName: string) => (dispatch, getState) => {
 }
 
 export const fetchMoreData = (dataName: string) => (dispatch, getState) => {
-	const currCharacters = getState().data[dataName]
+	const currData = getState().data[dataName]
 
 	const params = {
-		offset: (currCharacters.order || []).length,
-		...currCharacters.params
+		offset: (currData.order || []).length,
+		...currData.params
 	}
 
 	dispatch(fetchData(dataName, addData, params))
