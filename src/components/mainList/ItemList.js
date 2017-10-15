@@ -1,8 +1,6 @@
 import React from 'react';
 
-import { List } from 'material-ui/List'
 import MarvelListItem from 'components/mainList/ListItem'
-// import Infinite from 'react-infinite'
 
 export type PropsType = {
   rawList: Array<{

@@ -1,9 +1,7 @@
 import React from 'react';
 
 import ItemList from 'components/mainList/ItemList';
-import type { PropsType } from 'components/mainList/ItemList';
 import './MasterViewItemList.css'
-import Master from 'components/masterDetail/Master'
 
 import TextField from 'material-ui/TextField';
 

@@ -3,10 +3,10 @@ import md5 from 'md5'
 
 export default (url, queryArgs=[]) => {
 	let authStr = `?apikey=${marvelApi.publicKey}`
+
 	if (marvelApi.privateKey) {
 		const ts = Math.floor(Date.now());
 		const hash = md5(ts + marvelApi.privateKey + marvelApi.publicKey)
-		
 		authStr += `&ts=${ts}&hash=${hash}`
 	}
 
@@ -23,7 +23,7 @@ export default (url, queryArgs=[]) => {
 				.then(jsonRes => jsonRes.data)
 			);
 		} else {
-			throw 'Failed to fetch'
+			throw Error('Failed to fetch')
 		}
 	})
 } 

@@ -104,7 +104,7 @@ export const fetchIndividualDataItem = (dataName: string, resourceURI: string) =
 	}
 	if (firstItemList.length !== 1) {
 		alert(`could not load resource at ${resourceURI}`)
-		throw 'Could not load resource error'
+		throw Error('Could not load resource error')
 	}
 
 	dispatch(setDataFirstItem(dataName, firstItemList[0]))

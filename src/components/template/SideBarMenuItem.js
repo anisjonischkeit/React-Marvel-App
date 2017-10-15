@@ -1,7 +1,6 @@
 import React from 'react';
 
 import MenuItem from 'material-ui/MenuItem';
-import {withRouter} from 'react-router-dom';
 
 type MenuItemDataType = {
 	text: string,

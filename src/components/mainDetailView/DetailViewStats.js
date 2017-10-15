@@ -1,8 +1,6 @@
 import React from 'react';
-import { CardActions } from 'material-ui/Card'
-import FlatButton from 'material-ui/FlatButton'
-import Paper from 'material-ui/Paper';
 
+import Paper from 'material-ui/Paper';
 import {List, ListItem} from 'material-ui/List';
 import Subheader from 'material-ui/Subheader';
 

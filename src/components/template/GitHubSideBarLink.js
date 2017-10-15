@@ -6,7 +6,7 @@ export default (props) => (
 		<a href={props.link}>
 			<MenuItem 
 				text="GitHub"
-				leftIcon={<img src="/images/github.png" />}
+				leftIcon={<img src="/images/github.png" alt='GitHub Icon' />}
 				style={{ opacity: 0.55 }}
 			/>
 		</a>

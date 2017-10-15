@@ -19,10 +19,6 @@ import EventDetail from 'containers/mainDetailView/EventDetailView';
 import SeriesMaster from 'containers/mainList/SeriesList';
 import SeriesDetail from 'containers/mainDetailView/SeriesDetailView';
 
-import StoryMaster from 'containers/mainList/StoryList';
-import StoryDetail from 'containers/mainDetailView/StoryDetailView';
-
-
 export default () => (
 		<Switch>
 			<Redirect exact path='/' to='/characters' />
@@ -59,13 +55,6 @@ export default () => (
           masterComponent={SeriesMaster}
           detailComponent={SeriesDetail}
           reduxEntryPointName='series'
-        />
-      </Route>
-      <Route exact path='/stories'>
-        <MasterDetailSwitcher
-          masterComponent={StoryMaster}
-          detailComponent={StoryDetail}
-          reduxEntryPointName='stories'
         />
       </Route>
     </Switch>

@@ -9,7 +9,6 @@ import Sidebar from 'components/template/SideBar';
 import MenuItem from 'containers/template/SideBarMenuItem';
 
 import PersonIcon from 'material-ui/svg-icons/social/person';
-import StoriesIcon from 'material-ui/svg-icons/content/font-download';
 import ComicsIcon from 'material-ui/svg-icons/image/photo';
 import CreatorsIcon from 'material-ui/svg-icons/image/brush';
 import EventsIcon from 'material-ui/svg-icons/editor/insert-invitation';
@@ -23,10 +22,9 @@ const menuItems = [
   {text: 'Creators', link: '/creators', leftIcon: <CreatorsIcon />},
   {text: 'Events', link: '/events', leftIcon: <EventsIcon />},
   {text: 'Series', link: '/series', leftIcon: <SeriesIcon />},
-  // {text: 'Stories', link: '/stories', leftIcon: <StoriesIcon />},
 ]
 
-const mapStateToProps = (state/*: State*/) => ({
+const mapStateToProps = (state) => ({
   ...state.template.sidebar,
   menuItems: [
     ...menuItems.map(item => <MenuItem key={item.link} {...item} />),
