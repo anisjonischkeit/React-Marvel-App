@@ -63,14 +63,14 @@ const mapStateToProps = (state, props) => {
 
 	let rawList = undefined
 	if (listData.order) {
-		rawList = listData.order.map(item => ({
-			...props.mapDataItemToItemList(listData.obj[item]),
+		rawList = listData.order.map((item, idx) => ({
+			...props.mapDataItemToItemList(listData.obj[item], idx + 1),
 			active: listData.obj[item].id === listData.selectedId
 		}))
 		if (listData.firstItem) {
 			rawList = [
 				{
-					...props.mapDataItemToItemList(listData.firstItem), 
+					...props.mapDataItemToItemList(listData.firstItem, 0), 
 					active: listData.firstItem.id === listData.selectedId
 				},
 				...rawList
@@ -80,9 +80,11 @@ const mapStateToProps = (state, props) => {
 
 	return {
 		childProps: {
-			rawList
+			rawList,
+			loading: listData.loading
 		},
-		searchField: listData.searchField
+		searchField: listData.searchField,
+
 	}
 };
 
