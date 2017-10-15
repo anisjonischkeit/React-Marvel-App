@@ -7,7 +7,7 @@ import Master from 'components/masterDetail/Master'
 
 import TextField from 'material-ui/TextField';
 
-
+import CircularProgress from 'material-ui/CircularProgress';
 
 export default class FixedWidthItemList extends React.Component {
 	constructor(props) {
@@ -40,6 +40,20 @@ export default class FixedWidthItemList extends React.Component {
 				/>
 				<div className="fixedWidthItemList" width={this.props.width} onScroll={this.handleScroll} ref={ref => {this.listElement = ref}}>
 					<ItemList {...this.props} />
+					
+					{ this.props.loading ?
+						(
+						<div>
+							<br />
+								<div style={{textAlign: 'center'}}>
+									<CircularProgress />
+								</div>
+							<br />
+						</div>
+						)
+					:
+						null
+					}
 				</div>
 			</div>
 		)

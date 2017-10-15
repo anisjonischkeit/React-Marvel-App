@@ -16,16 +16,12 @@ export type PropsType = {
 }
 
 const getList = (list, loading: boolean, selectItem) => {
-  if (loading) {
-    return <p>loading</p>
+  if (list != null) {
+    return list.map(item => (
+      <MarvelListItem key={item.id} {...item} selectItem={selectItem} />
+    ))
   } else {
-    if (list != null) {
-      return list.map(item => (
-        <MarvelListItem key={item.id} {...item} selectItem={selectItem} />
-      ))
-    } else {
-      return <p>no data found</p>
-    }
+    return <p>no data found</p>
   }
 }
  
@@ -51,12 +47,6 @@ export default class ItemList extends React.Component<PropsType> {
 
     if (rawList != null) {
       return (
-        // <ReactList
-        //   itemRenderer={this.renderItem}
-        //   length={rawList.length}
-        //   type='variable'
-        //   threshold={300}
-        // />
         list
       )
     } else {
