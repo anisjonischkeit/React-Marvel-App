@@ -2,7 +2,7 @@ import * as React from 'react';
 import SideBarItemList from 'components/mainList/SideBarItemList';
 
 import { bindActionCreators } from 'redux';
-import { fetchInitialData, fetchMoreData, selectDataItem, setDataRetrievalParams } from 'actions/data/characterActions'
+import { fetchInitialData, fetchMoreData, selectDataItem, setDataRetrievalParams } from 'actions/data/'
 import { openSideBar } from 'actions/template/sidebarActions'
 
 import { connect } from 'react-redux';

@@ -3,7 +3,7 @@ import DetailViewComponent from 'components/mainDetailView/DetailView';
 import DetailViewStats from 'components/mainDetailView/DetailViewStats';
 
 import { bindActionCreators } from 'redux';
-import { fetchIndividualDataItem, selectDataItem } from 'actions/data/characterActions'
+import { fetchIndividualDataItem, selectDataItem } from 'actions/data/'
 import { withRouter } from 'react-router-dom'
 
 import { CardText } from 'material-ui/Card';

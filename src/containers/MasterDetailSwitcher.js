@@ -5,7 +5,7 @@ import MediaQuery from 'react-responsive';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { selectDataItem } from 'actions/data/characterActions';
+import { selectDataItem } from 'actions/data/';
 
 class MasterDetailSwitcher extends React.Component {
 	constructor(props) {

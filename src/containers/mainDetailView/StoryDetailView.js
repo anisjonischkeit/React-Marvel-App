@@ -4,9 +4,6 @@ import DetailViewStats from 'components/mainDetailView/DetailViewStats';
 
 import { CardText } from 'material-ui/Card';
 
-// import { bindActionCreators } from 'redux';
-// import { fetchCharacters } from 'actions/data/characterActions'
-
 import { connect } from 'react-redux';
 
 const DetailViewContainer = props => {

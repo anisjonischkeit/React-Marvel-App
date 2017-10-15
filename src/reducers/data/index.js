@@ -6,7 +6,7 @@ import {
 	SELECT_DATA_ITEM,
 	SET_DATA_SEARCH_FIELD,
 	SET_DATA_FIRST_ITEM
-} from 'actions/data/characterActions'
+} from 'actions/data/'
 
 type DataType = {
 	obj: ?Array<any>,
