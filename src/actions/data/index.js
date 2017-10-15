@@ -54,12 +54,12 @@ const fetchData = (dataName: string, actionCreator, params = {}) => async (dispa
 	if (!currData.loading) {
 		dispatch(setDataLoadingStatus(dataName, true))
 
-		let characters = null
+		let data = null
 		let outOfData = false
 		try {
 			const fetchRes = await marvelFetch(`https://gateway.marvel.com:443/v1/public/${dataName}`, params)
 			outOfData = fetchRes.results.length < fetchRes.limit
-			characters = fetchRes.results
+			data = fetchRes.results
 		} catch(err) {
 			// we are no longer loading so set this variable to false
 			dispatch(setDataLoadingStatus(dataName, false))
@@ -70,7 +70,7 @@ const fetchData = (dataName: string, actionCreator, params = {}) => async (dispa
 		let dataObj = {};
 		let dataOrder = [];
 
-		characters.forEach(char => {
+		data.forEach(char => {
 			dataObj[char.id] = char
 			dataOrder.push(char.id)
 		})

@@ -20,8 +20,8 @@ class List extends React.Component<PropsType> {
 		
 		this.onListScroll = this._onListScroll.bind(this);
 
-		this.selectCharacter = (id) => props.selectDataItem(props.reduxEntryPointName, id)
-		this.setCharacterSearchField = value => props.setDataRetrievalParams(props.reduxEntryPointName, (value !== '' ? {[props.filterParamName]: value} : undefined))
+		this.selectData = (id) => props.selectDataItem(props.reduxEntryPointName, id)
+		this.setDataSearchField = value => props.setDataRetrievalParams(props.reduxEntryPointName, (value !== '' ? {[props.filterParamName]: value} : undefined))
 		this.fetchInitialData = () => props.fetchInitialData(props.reduxEntryPointName);
 	}
 
@@ -50,9 +50,9 @@ class List extends React.Component<PropsType> {
 					{...this.props.childProps}
 					handleScroll={this.onListScroll}
 					listName={this.props.displayName}
-					selectItem={this.selectCharacter}
+					selectItem={this.selectData}
 					executeSearch={this.fetchInitialData}
-					onSearchChange={this.setCharacterSearchField}
+					onSearchChange={this.setDataSearchField}
 				/>
 			</Master>
 		)

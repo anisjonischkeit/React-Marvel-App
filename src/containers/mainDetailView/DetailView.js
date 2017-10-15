@@ -18,8 +18,8 @@ const DetailViewContainer = withRouter(props => {
 		props.history.push(`/${dataName}`)
 	}
 
- 	if (props.selectedId && props.charactersObj) {
-		let selected = props.charactersObj[props.selectedId];
+ 	if (props.selectedId && props.dataObj) {
+		let selected = props.dataObj[props.selectedId];
 		if (selected == null) {
 			if (props.firstItem && props.selectedId === props.firstItem.id) {
 				selected = props.firstItem
@@ -66,7 +66,7 @@ const DetailViewContainer = withRouter(props => {
 const mapStateToProps = (state, props) => {
 	return {
 		selectedId: state.data[props.reduxEntryPointName].selectedId,
-		charactersObj: state.data[props.reduxEntryPointName].obj,
+		dataObj: state.data[props.reduxEntryPointName].obj,
 		firstItem: state.data[props.reduxEntryPointName].firstItem
 	}
 }
