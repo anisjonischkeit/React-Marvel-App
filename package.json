@@ -2,7 +2,6 @@
   "name": "marvel-app",
   "version": "0.1.0",
   "private": true,
-  "licence": "MIT",
   "devDependencies": {
     "cross-env": "^5.0.5",
     "gh-pages": "^1.0.0"
@@ -25,6 +24,6 @@
     "build": "cross-env NODE_PATH=./src react-scripts build",
     "test": "cross-env NODE_PATH=./src react-scripts test --env=jsdom",
     "eject": "cross-env NODE_PATH=./src react-scripts eject",
-    "publish": "yarn run build && node -e \"require('gh-pages').publish('build');\""
+    "publish": "yarn build && node ./scripts/publishToGHPages.js"
   }
 }
