@@ -18,7 +18,7 @@ export type PropsType = {
 const getList = (list, loading: boolean, selectItem) => {
   if (list != null) {
     return list.map(item => (
-      <MarvelListItem key={item.id} {...item} selectItem={selectItem} />
+      <MarvelListItem key={item.key} {...item} selectItem={selectItem} />
     ))
   } else {
     return <p>no data found</p>
