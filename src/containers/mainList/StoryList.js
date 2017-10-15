@@ -1,5 +1,5 @@
 import * as React from 'react';
-import FixedWidthItemListComponent from 'components/mainList/SideBarItemList';
+import MasterViewItemList from 'components/mainList/MasterViewItemList';
 
 import { bindActionCreators } from 'redux';
 import { fetchInitialData, fetchMoreData, selectDataItem } from 'actions/data/'
@@ -27,7 +27,7 @@ class ComicList extends React.Component {
 
 	render() {
 		return (
-			<FixedWidthItemListComponent
+			<MasterViewItemList
 				{...this.props.childProps}
 				listName='Stories'
 				selectItem={this.selectCharacter}

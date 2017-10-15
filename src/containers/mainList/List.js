@@ -1,5 +1,5 @@
 import * as React from 'react';
-import SideBarItemList from 'components/mainList/SideBarItemList';
+import MasterViewItemList from 'components/mainList/MasterViewItemList';
 
 import { bindActionCreators } from 'redux';
 import { fetchInitialData, fetchMoreData, selectDataItem, setDataRetrievalParams } from 'actions/data/'
@@ -45,7 +45,7 @@ class List extends React.Component<PropsType> {
 				title={this.props.displayName}
 				onMenuClick={this.props.openSideBar}
 			>
-				<SideBarItemList
+				<MasterViewItemList
 					{...this.props.childProps}
 					handleScroll={this.onListScroll}
 					listName={this.props.displayName}

@@ -51,8 +51,8 @@ export default (state: StateType = initialState, action : ActionsType) => {
 				...state,
 				[action.dataName]: {
 					...state[action.dataName],
-					obj: action.characterObj,
-					order: action.characterOrder
+					obj: action.dataObj,
+					order: action.dataOrder
 				}
 			}
 		case ADD_DATA:
@@ -60,8 +60,8 @@ export default (state: StateType = initialState, action : ActionsType) => {
 			...state,
 			[action.dataName]: {
 				...state[action.dataName],
-				obj: {...state[action.dataName].obj, ...action.characterObj},
-				order: [...state[action.dataName].order, ...action.characterOrder]
+				obj: {...state[action.dataName].obj, ...action.dataObj},
+				order: [...state[action.dataName].order, ...action.dataOrder]
 			}
 		}
 		case SET_DATA_SEARCH_FIELD:
@@ -85,7 +85,7 @@ export default (state: StateType = initialState, action : ActionsType) => {
 				...state,
 				[action.dataName]: {
 					...state[action.dataName],
-					selectedId: action.characterId
+					selectedId: action.dataId
 				}
 			}
 		case SET_DATA_FIRST_ITEM:
