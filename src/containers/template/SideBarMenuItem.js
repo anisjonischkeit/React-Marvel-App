@@ -5,7 +5,6 @@ import store from 'store';
 import { withRouter } from 'react-router-dom'
 
 const onClickHandler = (link: string, history) => {
-	console.log(`closing sidebar and going to ${link}`)
 	store.dispatch(setSidebarOpenState(false))
 	history.push(link)
 }
