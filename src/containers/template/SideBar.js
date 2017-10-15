@@ -15,6 +15,8 @@ import CreatorsIcon from 'material-ui/svg-icons/image/brush';
 import EventsIcon from 'material-ui/svg-icons/editor/insert-invitation';
 import SeriesIcon from 'material-ui/svg-icons/av/library-books';
 
+import GitHubSideBarLink from 'components/template/GitHubSideBarLink'
+
 const menuItems = [
   {text: 'Characters', link: '/characters', leftIcon: <PersonIcon />},
   {text: 'Comics', link: '/comics', leftIcon: <ComicsIcon />},
@@ -26,7 +28,10 @@ const menuItems = [
 
 const mapStateToProps = (state/*: State*/) => ({
   ...state.template.sidebar,
-  menuItems: menuItems.map(item => <MenuItem key={item.link} {...item} />)
+  menuItems: [
+    ...menuItems.map(item => <MenuItem key={item.link} {...item} />),
+    <GitHubSideBarLink link='https://github.com/anisjonischkeit/React-Marvel-App' />
+  ]
 });
 
 const mapDispatchToProps = dispatch => ({
