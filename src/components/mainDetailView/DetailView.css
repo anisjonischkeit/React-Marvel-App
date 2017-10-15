@@ -1,4 +1,11 @@
 .detailViewCard {
-	height: calc(100vh - 64px);
-	overflow-y: auto;
+	height: 100vh;
+	overflow-y: scroll;
+	-webkit-overflow-scrolling: touch;
+}
+
+@media only screen and (max-width: 960px) {
+	.detailViewCard {
+		height: calc(100vh - 64px);
+	}
 }

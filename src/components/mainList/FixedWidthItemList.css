@@ -1,5 +1,6 @@
 .fixedWidthItemList {
-	overflow-y: auto;
+	overflow-y: scroll;
+	-webkit-overflow-scrolling: touch;
 	height: calc(100vh - 72px);
 }
 
