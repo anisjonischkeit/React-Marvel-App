@@ -1,7 +1,5 @@
 .detailView {
 	/* width: 100%; */
-	height: 100vh;
-	overflow-y: auto;
 	margin: 0;
 	width: calc(100% - 400px);
 	float: left;
