@@ -8,18 +8,20 @@ export const SELECT_DATA_ITEM = 'SELECT_DATA_ITEM';
 export const SET_DATA_SEARCH_FIELD = 'SET_DATA_SEARCH_FIELD';
 export const SET_DATA_FIRST_ITEM = 'SET_DATA_FIRST_ITEM';
 
-export const getData = (dataName: string, dataObj: any, dataOrder: Array<string>) => ({
+export const getData = (dataName: string, dataObj: any, dataOrder: Array<string>, outOfData: boolean) => ({
 	type: SET_DATA,
 	dataName,
 	dataObj,
-	dataOrder
+	dataOrder,
+	outOfData
 })
 
-export const addData = (dataName: string, dataObj: any, dataOrder: Array<string>) => ({
+export const addData = (dataName: string, dataObj: any, dataOrder: Array<string>, outOfData: boolean) => ({
 	type: ADD_DATA,
 	dataName,
 	dataObj,
-	dataOrder
+	dataOrder,
+	outOfData
 })
 
 export const setDataRetrievalParams = (dataName: string, params: {[string]: string}) => ({
@@ -53,8 +55,11 @@ const fetchData = (dataName: string, actionCreator, params = {}) => async (dispa
 		dispatch(setDataLoadingStatus(dataName, true))
 
 		let characters = null
+		let outOfData = false
 		try {
-			characters = (await marvelFetch(`https://gateway.marvel.com:443/v1/public/${dataName}`, params)).results
+			const fetchRes = await marvelFetch(`https://gateway.marvel.com:443/v1/public/${dataName}`, params)
+			outOfData = fetchRes.results.length < fetchRes.limit
+			characters = fetchRes.results
 		} catch(err) {
 			// we are no longer loading so set this variable to false
 			dispatch(setDataLoadingStatus(dataName, false))
@@ -70,7 +75,7 @@ const fetchData = (dataName: string, actionCreator, params = {}) => async (dispa
 			dataOrder.push(char.id)
 		})
 
-		dispatch(actionCreator(dataName, dataObj, dataOrder))
+		dispatch(actionCreator(dataName, dataObj, dataOrder, outOfData))
 		dispatch(setDataLoadingStatus(dataName, false))
 	}
 

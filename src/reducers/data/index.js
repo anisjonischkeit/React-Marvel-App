@@ -14,7 +14,8 @@ type DataType = {
 	loading: boolean,
 	selectedId: ?number,
 	searchField: ?string,
-	firstItem: ?any
+	firstItem: ?any,
+	outOfData: boolean,
 }
 
 export type StateType = {
@@ -31,7 +32,8 @@ const initialDataObj = {
 	loading: false,
 	selectedId: null,
 	firstItem: null,
-	params: {}
+	params: {},
+	outOfData: false
 }
 
 const initialState = {
@@ -50,7 +52,8 @@ export default (state: StateType = initialState, action : ActionsType) => {
 				[action.dataName]: {
 					...state[action.dataName],
 					obj: action.dataObj,
-					order: action.dataOrder
+					order: action.dataOrder,
+					outOfData: action.outOfData
 				}
 			}
 		case ADD_DATA:
@@ -59,7 +62,8 @@ export default (state: StateType = initialState, action : ActionsType) => {
 			[action.dataName]: {
 				...state[action.dataName],
 				obj: {...state[action.dataName].obj, ...action.dataObj},
-				order: [...state[action.dataName].order, ...action.dataOrder]
+				order: [...state[action.dataName].order, ...action.dataOrder],
+				outOfData: action.outOfData
 			}
 		}
 		case SET_DATA_SEARCH_FIELD:

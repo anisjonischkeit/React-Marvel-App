@@ -33,9 +33,10 @@ class List extends React.Component<PropsType> {
 		const scroll = el.scrollTop
 		const height = el.scrollHeight - el.offsetHeight
 	
-		if (scroll > height - 400) {
-			console.log('fetch more')
-			this.props.fetchMoreData(this.props.reduxEntryPointName)
+		if (!this.props.outOfData) {
+			if (scroll > height - 400) {
+				this.props.fetchMoreData(this.props.reduxEntryPointName)
+			}
 		}
 	}
 
@@ -84,7 +85,7 @@ const mapStateToProps = (state, props) => {
 			loading: listData.loading
 		},
 		searchField: listData.searchField,
-
+		outOfData: listData.outOfData
 	}
 };
 
