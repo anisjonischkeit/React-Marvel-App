@@ -24,12 +24,8 @@ const getList = (list, loading: boolean, selectItem) => {
 }
  
 export default class ItemList extends React.Component<PropsType> {
-  constructor(props) {
-    super(props)
-    this.renderItem = this._renderItem.bind(this)
-  }
   
-  _renderItem(index, key) {
+  renderItem = (index, key) => {
     
     if (index === this.props.rawList.length - 1) {
       this.props.fetchMoreFunc()

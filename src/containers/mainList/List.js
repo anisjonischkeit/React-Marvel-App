@@ -17,9 +17,9 @@ type PropsType = {
 class List extends React.Component<PropsType> {
 	constructor(props) {
 		super(props)
-		
-		this.onListScroll = this._onListScroll.bind(this);
 
+		// doing this in the constructor rather than in render stops
+		// functions from being re-created on each re-render
 		this.selectData = (id) => props.selectDataItem(props.reduxEntryPointName, id)
 		this.setDataSearchField = value => props.setDataRetrievalParams(props.reduxEntryPointName, (value !== '' ? {[props.filterParamName]: value} : undefined))
 		this.fetchInitialData = () => props.fetchInitialData(props.reduxEntryPointName);
@@ -29,7 +29,7 @@ class List extends React.Component<PropsType> {
 		this.fetchInitialData()
 	}
 
-	_onListScroll(el) {
+	onListScroll = (el) => {
 		const scroll = el.scrollTop
 		const height = el.scrollHeight - el.offsetHeight
 	

@@ -8,24 +8,20 @@ import TextField from 'material-ui/TextField';
 import CircularProgress from 'material-ui/CircularProgress';
 
 export default class FixedWidthItemList extends React.Component {
-	constructor(props) {
-		super(props)
 
-		this.onSearchChange = e => {
-			// Thank you closures!!!
-			const value = e.currentTarget.value;
-			props.onSearchChange(value);
-		}
-
-		this.handleSearchKeyPress = e => {
-			const key = e.keyCode
-			if (key === 13) {
-				props.executeSearch()
-			}
-		}
-
-		this.handleScroll = (e) => this.props.handleScroll(this.listElement);
+	onSearchChange = e => {
+		const value = e.currentTarget.value;
+		this.props.onSearchChange(value);
 	}
+
+	handleSearchKeyPress = e => {
+		const key = e.keyCode
+		if (key === 13) {
+			this.props.executeSearch()
+		}
+	}
+
+	handleScroll = e => this.props.handleScroll(this.listElement);
 
 	render() {
 		return (
