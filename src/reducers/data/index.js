@@ -44,60 +44,45 @@ const initialState = {
 	series: {...initialDataObj},
 }
 
+const createDataUpdater = (state, action) => update => ({
+	...state,
+	[action.dataName]: {
+		...state[action.dataName],
+		...update
+	}
+})
+
 export default (state: StateType = initialState, action : ActionsType) => {
+	const updateData = createDataUpdater(state, action)
 	switch (action.type) {
 		case SET_DATA:
-			return {
-				...state,
-				[action.dataName]: {
-					...state[action.dataName],
-					obj: action.dataObj,
-					order: action.dataOrder,
-					outOfData: action.outOfData
-				}
-			}
+			return updateData({
+				obj: action.dataObj,
+				order: action.dataOrder,
+				outOfData: action.outOfData
+			})
 		case ADD_DATA:
-		return {
-			...state,
-			[action.dataName]: {
-				...state[action.dataName],
+			return updateData({
 				obj: {...state[action.dataName].obj, ...action.dataObj},
 				order: [...state[action.dataName].order, ...action.dataOrder],
 				outOfData: action.outOfData
-			}
-		}
+			})
 		case SET_DATA_SEARCH_FIELD:
-			return {
-				...state,
-				[action.dataName]: {
-					...state[action.dataName],
-					params: action.params
-				}
-			}
+			return updateData({
+				params: action.params
+			})
 		case SET_DATA_LOADING_STATUS:
-			return {
-				...state,
-				[action.dataName]: {
-					...state[action.dataName],
-					loading: action.loading
-				}
-			}
+			return updateData({
+				loading: action.loading
+			})
 		case SELECT_DATA_ITEM:
-			return {
-				...state,
-				[action.dataName]: {
-					...state[action.dataName],
-					selectedId: action.dataId
-				}
-			}
+			return updateData({
+				selectedId: action.dataId
+			})
 		case SET_DATA_FIRST_ITEM:
-			return {
-				...state,
-				[action.dataName]: {
-					...state[action.dataName],
-					firstItem: action.item
-				}
-			}
+			return updateData({
+				firstItem: action.item
+			})
 		default:
 			return state
 	}
