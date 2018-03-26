@@ -4,6 +4,7 @@
   "private": false,
   "devDependencies": {
     "cross-env": "^5.0.5",
+    "flow-bin": "^0.68.0",
     "gh-pages": "^1.0.0"
   },
   "dependencies": {
