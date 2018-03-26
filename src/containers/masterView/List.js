@@ -15,14 +15,17 @@ type PropsType = {
 }
 
 class List extends React.Component<PropsType> {
-	constructor(props) {
-		super(props)
 
-		// doing this in the constructor rather than in render stops
-		// functions from being re-created on each re-render
-		this.selectData = (id) => props.selectDataItem(props.reduxEntryPointName, id)
-		this.setDataSearchField = value => props.setDataRetrievalParams(props.reduxEntryPointName, (value !== '' ? {[props.filterParamName]: value} : undefined))
-		this.fetchInitialData = () => props.fetchInitialData(props.reduxEntryPointName);
+	fetchInitialData = () => this.props.fetchInitialData(this.props.reduxEntryPointName);
+
+	selectData = (id) => this.props.selectDataItem(this.props.reduxEntryPointName, id)
+
+	setDataSearchField = value => {
+		let params = undefined;
+		if (value !== '') {
+			params = {[this.props.filterParamName]: value}
+		}
+		this.props.setDataRetrievalParams(this.props.reduxEntryPointName, params)
 	}
 
 	componentDidMount() {
@@ -59,25 +62,38 @@ class List extends React.Component<PropsType> {
 	}
 }
 
-const mapStateToProps = (state, props) => {
-	const listData = state.data[props.reduxEntryPointName];
+const orderData = (listData, mapItemToListFn) => {
+	let rawList = []
 
-	let rawList = undefined
+	// if there are items then there will be an ordering
 	if (listData.order) {
+
+		// actually order the list
 		rawList = listData.order.map((item, idx) => ({
-			...props.mapDataItemToItemList(listData.obj[item], idx + 1),
+			...mapItemToListFn(listData.obj[item], idx + 1),
 			active: listData.obj[item].id === listData.selectedId
 		}))
+
+		// if we are going to a specific item, that item is popped
+		// to the top of the list
 		if (listData.firstItem) {
 			rawList = [
 				{
-					...props.mapDataItemToItemList(listData.firstItem, 0), 
+					...mapItemToListFn(listData.firstItem, 0), 
 					active: listData.firstItem.id === listData.selectedId
 				},
 				...rawList
 			]
 		}
 	}
+
+	return rawList
+}
+
+const mapStateToProps = (state, props) => {
+	const listData = state.data[props.reduxEntryPointName];
+
+	const rawList = orderData(listData, props.mapDataItemToItemList)
 
 	return {
 		childProps: {
