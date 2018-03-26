@@ -9,13 +9,13 @@
   "dependencies": {
     "material-ui": "^0.19.2",
     "md5": "^2.2.1",
-    "react": "^16.0.0",
-    "react-dom": "^16.0.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
     "react-redux": "^5.0.6",
     "react-responsive": "^2.0.0",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
-    "react-scripts": "1.0.13",
+    "react-scripts": "1.1.1",
     "redux": "^3.6.0",
     "redux-thunk": "^2.2.0"
   },
