@@ -1,6 +1,6 @@
 import * as React from 'react';
 import DetailViewComponent from '../../components/detailView/DetailView';
-import DetailViewStats from '../../components/detailView/DetailViewStats';
+import DetailItemProperties from '../../components/detailView/DetailItemProperties';
 
 import { bindActionCreators } from 'redux';
 import { fetchIndividualDataItem, selectDataItem } from '../../actions/data/'
@@ -28,9 +28,9 @@ const DetailViewContainer = withRouter(props => {
 			}
 		}
 		
-		let stats = {}
+		let itemProperties = {}
 		props.statNames.forEach(key => { 
-			stats[key] = {...selected[key], onClickHandler: onClickHandler.bind(null, key)}
+			itemProperties[key] = {...selected[key], onClickHandler: onClickHandler.bind(null, key)}
 		})
 
 		const descriptionWithStats = (
@@ -39,8 +39,8 @@ const DetailViewContainer = withRouter(props => {
 				 	{selected.description}
 				</CardText>
 				
-				<DetailViewStats
-					stats={stats}
+				<DetailItemProperties
+					itemProperties={itemProperties}
 				/>
 
 			</div>

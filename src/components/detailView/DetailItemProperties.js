@@ -15,7 +15,7 @@ const styles = {
 }
 
 type PropsType = {
-	stats : {
+	itemProperties : {
 		[StatName : string] : {
 			onClickHandler : (resourceUri: string) => void,
 			items : Array<{
@@ -28,18 +28,18 @@ type PropsType = {
 
 export default (props : PropsType) => (
 	<div style={styles.listRoot}>
-		{Object.keys(props.stats).map(key => {
-			const stat = props.stats[key]
-			if (stat.items.length > 0) {
+		{Object.keys(props.itemProperties).map(key => {
+			const itemProperty = props.itemProperties[key]
+			if (itemProperty.items.length > 0) {
 				return (
 					<Paper key={key} style={{width: 350, margin: 10}}>
 						<List>
 							<Subheader style={styles.listHeader}>{key}</Subheader>
-								{props.stats[key].items.map(item => (
+								{props.itemProperties[key].items.map(item => (
 									<ListItem
 									key={item.resourceURI}
 									primaryText={item.name}
-									onClick={props.stats[key].onClickHandler.bind(undefined, item.resourceURI)}
+									onClick={props.itemProperties[key].onClickHandler.bind(undefined, item.resourceURI)}
 									/>
 								))}
 							</List>
