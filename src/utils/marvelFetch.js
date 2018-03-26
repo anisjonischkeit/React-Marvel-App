@@ -1,7 +1,11 @@
 import { marvelApi } from '../settings';
 import md5 from 'md5'
 
-export default (url, queryArgs=[]) => {
+type QueryArgsType = {
+	[key: string]: string
+}
+
+export default (url : string, queryArgs : QueryArgsType = {}) : Promise<object> => {
 	let authStr = `?apikey=${marvelApi.publicKey}`
 
 	if (marvelApi.privateKey) {
@@ -23,6 +27,7 @@ export default (url, queryArgs=[]) => {
 				.then(jsonRes => jsonRes.data)
 			);
 		} else {
+			alert("something went wrong while fetching marvel data")
 			throw Error('Failed to fetch')
 		}
 	})

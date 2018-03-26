@@ -4,7 +4,14 @@ import './DetailView.css';
 
 import { Card, CardMedia, CardTitle } from 'material-ui/Card';
 
-export default (props) => (
+type PropsType = {
+	title: string,
+	subtitle: string,
+	img: string,
+	description: string,
+}
+
+export default (props : PropsType) => (
 	<Card className='detailViewCard'>
 		<CardMedia
 			overlay={<CardTitle title={props.title} subtitle={props.subtitle} />}

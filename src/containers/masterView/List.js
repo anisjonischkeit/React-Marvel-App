@@ -1,12 +1,12 @@
 import * as React from 'react';
-import MasterViewItemList from '../../components/mainList/MasterViewItemList';
+import MasterViewItemList from '../../components/masterView/MasterViewItemList';
 
 import { bindActionCreators } from 'redux';
 import { fetchInitialData, fetchMoreData, selectDataItem, setDataRetrievalParams } from '../../actions/data/'
 import { openSideBar } from '../../actions/template/sidebarActions'
 
 import { connect } from 'react-redux';
-import Master from '../../components/masterDetail/Master'
+import Master from '../../components/masterDetailView/Master'
 
 type PropsType = {
 	reduxEntryPointName: string,

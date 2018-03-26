@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import { setSidebarOpenState } from '../../actions/template/sidebarActions';
-import Sidebar from '../../components/template/SideBar';
+import SidebarComponent from '../../components/template/SideBar';
 import MenuItem from '../../containers/template/SideBarMenuItem';
 
 import PersonIcon from 'material-ui/svg-icons/social/person';
@@ -38,4 +38,4 @@ const mapDispatchToProps = dispatch => ({
   }, dispatch)
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Sidebar);
+export default connect(mapStateToProps, mapDispatchToProps)(SidebarComponent);

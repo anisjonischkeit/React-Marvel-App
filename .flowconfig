@@ -3,3 +3,6 @@ all=true
 
 [version]
 0.68.0
+
+[ignore]
+.*/node_modules/.*

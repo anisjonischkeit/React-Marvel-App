@@ -2,7 +2,8 @@ import React from 'react';
 import './Master.css'
 import AppBar from 'material-ui/AppBar'
 
-export default props => (
+
+export default (props : PropsType) => (
 	<div className='masterView'>
 		<AppBar
 			className='masterViewTopBar'
