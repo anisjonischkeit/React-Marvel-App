@@ -1,5 +1,5 @@
-import type { ActionsType } from 'types/redux'
-import { CHANGE_SIDEBAR_OPEN_STATE } from 'actions/template/sidebarActions'
+import type { ActionsType } from '../../types/redux'
+import { CHANGE_SIDEBAR_OPEN_STATE } from '../../actions/template/sidebarActions'
 
 export type StateType = {
 	open: boolean

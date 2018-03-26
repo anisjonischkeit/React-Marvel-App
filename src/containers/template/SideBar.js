@@ -4,9 +4,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { setSidebarOpenState } from 'actions/template/sidebarActions';
-import Sidebar from 'components/template/SideBar';
-import MenuItem from 'containers/template/SideBarMenuItem';
+import { setSidebarOpenState } from '../../actions/template/sidebarActions';
+import Sidebar from '../../components/template/SideBar';
+import MenuItem from '../../containers/template/SideBarMenuItem';
 
 import PersonIcon from 'material-ui/svg-icons/social/person';
 import ComicsIcon from 'material-ui/svg-icons/image/photo';
@@ -14,7 +14,7 @@ import CreatorsIcon from 'material-ui/svg-icons/image/brush';
 import EventsIcon from 'material-ui/svg-icons/editor/insert-invitation';
 import SeriesIcon from 'material-ui/svg-icons/av/library-books';
 
-import GitHubSideBarLink from 'components/template/GitHubSideBarLink'
+import GitHubSideBarLink from '../../components/template/GitHubSideBarLink'
 
 const menuItems = [
   {text: 'Characters', link: '/characters', leftIcon: <PersonIcon />},

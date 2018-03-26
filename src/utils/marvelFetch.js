@@ -1,4 +1,4 @@
-import { marvelApi } from 'settings';
+import { marvelApi } from '../settings';
 import md5 from 'md5'
 
 export default (url, queryArgs=[]) => {

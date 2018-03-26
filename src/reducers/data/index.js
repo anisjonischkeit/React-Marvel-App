@@ -1,4 +1,4 @@
-import type { ActionsType } from 'types/redux'
+import type { ActionsType } from '../../types/redux'
 import { 
 	SET_DATA, 
 	ADD_DATA, 
@@ -6,7 +6,7 @@ import {
 	SELECT_DATA_ITEM,
 	SET_DATA_SEARCH_FIELD,
 	SET_DATA_FIRST_ITEM
-} from 'actions/data/'
+} from '../../actions/data/'
 
 type DataType = {
 	obj: ?Array<any>,

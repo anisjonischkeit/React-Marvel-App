@@ -1,5 +1,5 @@
 import * as React from 'react';
-import DetailView from 'containers/mainDetailView/DetailView';
+import DetailView from './DetailView';
 
 export default () => (
 	<DetailView

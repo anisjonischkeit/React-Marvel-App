@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import List from 'containers/mainList/List'
+import List from './List'
 
 const mapComicsToItemList = (item: any, idx) => ({
 	key: `${item.id}-${idx}`,

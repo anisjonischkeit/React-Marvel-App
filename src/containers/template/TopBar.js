@@ -1,11 +1,11 @@
 // @flow
 
 import React from 'react';
-import TopBarComponent from 'components/template/TopBar';
+import TopBarComponent from '../../components/template/TopBar';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { openSideBar } from 'actions/template/sidebarActions';
+import { openSideBar } from '../../actions/template/sidebarActions';
 
 type PropsType = {
   setOpenState: typeof openSideBar

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import MarvelListItem from 'components/mainList/ListItem'
+import MarvelListItem from '../../components/mainList/ListItem'
 
 export type PropsType = {
   rawList: Array<{

@@ -1,4 +1,4 @@
-import marvelFetch from 'utils/marvelFetch'
+import marvelFetch from '../../utils/marvelFetch'
 
 
 export const SET_DATA = 'SET_DATA';
@@ -50,7 +50,7 @@ export const setDataLoadingStatus = (dataName: string, loading: boolean) => ({
 
 const fetchData = (dataName: string, actionCreator, params = {}) => async (dispatch, getState) => {
 	const currData = getState().data[dataName]
-	
+
 	if (!currData.loading) {
 		dispatch(setDataLoadingStatus(dataName, true))
 
@@ -66,7 +66,7 @@ const fetchData = (dataName: string, actionCreator, params = {}) => async (dispa
 			alert("something went wrong while fetching marvel data")
 			return
 		}
-		
+
 		let dataObj = {};
 		let dataOrder = [];
 

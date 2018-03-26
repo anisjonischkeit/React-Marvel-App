@@ -21,10 +21,10 @@
     "redux-thunk": "^2.2.0"
   },
   "scripts": {
-    "start": "cross-env NODE_PATH=./src react-scripts start",
-    "build": "cross-env NODE_PATH=./src react-scripts build",
-    "test": "cross-env NODE_PATH=./src react-scripts test --env=jsdom",
-    "eject": "cross-env NODE_PATH=./src react-scripts eject",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
     "ghpublish": "yarn build && node ./scripts/publishToGHPages.js"
   }
 }

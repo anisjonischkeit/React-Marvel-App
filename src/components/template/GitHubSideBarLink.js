@@ -1,5 +1,5 @@
 import React from 'react';
-import MenuItem from 'components/template/SideBarMenuItem';
+import MenuItem from '../../components/template/SideBarMenuItem';
 
 export default (props) => (
 	<div style={{bottom: 0, position: "absolute", width: 256}}>

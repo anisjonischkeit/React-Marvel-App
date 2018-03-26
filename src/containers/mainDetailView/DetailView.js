@@ -1,15 +1,15 @@
 import * as React from 'react';
-import DetailViewComponent from 'components/mainDetailView/DetailView';
-import DetailViewStats from 'components/mainDetailView/DetailViewStats';
+import DetailViewComponent from '../../components/mainDetailView/DetailView';
+import DetailViewStats from '../../components/mainDetailView/DetailViewStats';
 
 import { bindActionCreators } from 'redux';
-import { fetchIndividualDataItem, selectDataItem } from 'actions/data/'
+import { fetchIndividualDataItem, selectDataItem } from '../../actions/data/'
 import { withRouter } from 'react-router-dom'
 
 import { CardText } from 'material-ui/Card';
 import { connect } from 'react-redux';
 
-import Detail from 'components/masterDetail/Detail'
+import Detail from '../../components/masterDetail/Detail'
 
 const DetailViewContainer = withRouter(props => {
 	

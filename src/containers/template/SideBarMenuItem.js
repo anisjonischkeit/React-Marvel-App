@@ -1,14 +1,14 @@
 import * as React from 'react';
-import MenuItem from 'components/template/SideBarMenuItem';
-import { setSidebarOpenState } from 'actions/template/sidebarActions'
-import store from 'store';
+import MenuItem from '../../components/template/SideBarMenuItem';
+import { setSidebarOpenState } from '../../actions/template/sidebarActions'
+import store from '../../store';
 import { withRouter } from 'react-router-dom'
 
 const onClickHandler = (link: string, history) => {
 	store.dispatch(setSidebarOpenState(false))
 	history.push(link)
 }
- 
+
 type PropsType = {
 	text: string,
 	leftIcon: React.Element,
