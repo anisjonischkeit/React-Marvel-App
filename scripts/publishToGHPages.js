@@ -1,3 +1,8 @@
+// In order for our single page application to be accessible
+// via routes other than the / route on github pages, I simply
+// copy the index.html file renamed to the different pages in
+// the app
+
 console.log('Creating html files for pages')
 
 const fs = require('fs')
