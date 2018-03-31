@@ -4,11 +4,15 @@
   "private": false,
   "devDependencies": {
     "cross-env": "^5.0.5",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
     "flow-bin": "^0.68.0",
-    "gh-pages": "^1.0.0"
+    "gh-pages": "^1.0.0",
+    "react-test-renderer": "^16.2.0"
   },
   "dependencies": {
-    "material-ui": "^0.19.2",
+    "enzyme-to-json": "^3.3.3",
+    "material-ui": "^0.20.0",
     "md5": "^2.2.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
@@ -26,5 +30,10 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "ghpublish": "yarn build && node ./scripts/publishToGHPages.js"
+  },
+  "jest": {
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ]
   }
 }

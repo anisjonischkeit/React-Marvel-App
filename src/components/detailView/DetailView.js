@@ -8,7 +8,7 @@ type PropsType = {
 	title: string,
 	subtitle: string,
 	img: string,
-	description: string,
+	children: React$Node,
 }
 
 export default (props : PropsType) => (
@@ -18,6 +18,6 @@ export default (props : PropsType) => (
 		>
 			<img src={props.img} alt={props.title} />
 		</CardMedia>
-		{props.description}
+		{props.children}
 	</Card>
 )

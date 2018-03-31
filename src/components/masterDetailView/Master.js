@@ -1,7 +1,8 @@
 import React from 'react';
 import './Master.css'
 import AppBar from 'material-ui/AppBar'
-
+import IconButton from 'material-ui/IconButton';
+import MenuIcon from 'material-ui/svg-icons/navigation/menu';
 
 export default (props : PropsType) => (
 	<div className='masterView'>
@@ -9,7 +10,8 @@ export default (props : PropsType) => (
 			className='masterViewTopBar'
 			title={props.title}
 			iconClassNameRight="muidocs-icon-navigation-expand-more"
-			onLeftIconButtonTouchTap={props.onMenuClick}
+			iconElementLeft={<IconButton onClick={props.onMenuClick}><MenuIcon /></IconButton>}
+			// onLeftIconButtonTouchTap={props.onMenuClick}
 		/>
 		{props.children}
 	</div>

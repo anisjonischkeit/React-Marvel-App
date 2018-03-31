@@ -20,6 +20,7 @@ const DetailViewContainer = withRouter(props => {
 
  	if (props.selectedId && props.dataObj) {
 		let selected = props.dataObj[props.selectedId];
+
 		if (selected == null) {
 			if (props.firstItem && props.selectedId === props.firstItem.id) {
 				selected = props.firstItem
@@ -28,10 +29,12 @@ const DetailViewContainer = withRouter(props => {
 			}
 		}
 		
-		let itemProperties = {}
-		props.statNames.forEach(key => { 
-			itemProperties[key] = {...selected[key], onClickHandler: onClickHandler.bind(null, key)}
-		})
+		let itemProperties = props.statNames.map(statName => ({
+				...selected[statName],
+				onClickHandler: onClickHandler.bind(null, statName),
+				name: statName
+			})
+		)
 
 		const descriptionWithStats = (
 			<div>
@@ -55,8 +58,9 @@ const DetailViewContainer = withRouter(props => {
 					title={selected[props.titleFieldName]}
 					subtitle={selected.id}
 					img={`${selected.thumbnail.path}/landscape_incredible.${selected.thumbnail.extension}`}
-					description={descriptionWithStats}
-				/>
+				>
+					{descriptionWithStats}
+				</DetailViewComponent>
 			</Detail>
 		)
 	}
