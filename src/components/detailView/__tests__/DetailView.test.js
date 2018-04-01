@@ -6,16 +6,18 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import DetailView from "../DetailView"
 
 describe('DetailView', () => {
-  // Render a checkbox with label in the document
-  
   describe("Renders correctly", () => {
     const itemProperties = mount(
       (<MuiThemeProvider>
-				<DetailView>
+				<DetailView
+					title="Sample Title"
+					subtitle="Sample SubTitle"
+					img="http://sampleImgUrl.com"
+				>
 					<p id="sampleChild">sampleChild</p>
 					<p id="sampleChild2">sampleChild</p>
 				</DetailView>
-      </MuiThemeProvider>),
+      </MuiThemeProvider>)
     );
 
 		it("Matches Snapshot", () => {

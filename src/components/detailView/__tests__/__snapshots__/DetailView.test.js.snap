@@ -2,7 +2,11 @@
 
 exports[`DetailView Renders correctly Matches Snapshot 1`] = `
 <MuiThemeProvider>
-  <Component>
+  <Component
+    img="http://sampleImgUrl.com"
+    subtitle="Sample SubTitle"
+    title="Sample Title"
+  >
     <Card
       className="detailViewCard"
       expandable={false}
@@ -50,8 +54,8 @@ exports[`DetailView Renders correctly Matches Snapshot 1`] = `
               key=".0"
               overlay={
                 <CardTitle
-                  subtitle={undefined}
-                  title={undefined}
+                  subtitle="Sample SubTitle"
+                  title="Sample Title"
                 />
               }
             >
@@ -71,7 +75,9 @@ exports[`DetailView Renders correctly Matches Snapshot 1`] = `
                   }
                 >
                   <img
+                    alt="Sample Title"
                     key=".0"
+                    src="http://sampleImgUrl.com"
                     style={
                       Object {
                         "maxWidth": "100%",
@@ -119,7 +125,9 @@ exports[`DetailView Renders correctly Matches Snapshot 1`] = `
                     >
                       <CardTitle
                         key=".0"
+                        subtitle="Sample SubTitle"
                         subtitleColor="rgba(255, 255, 255, 0.54)"
+                        title="Sample Title"
                         titleColor="rgba(255, 255, 255, 0.87)"
                       >
                         <div
@@ -141,7 +149,9 @@ exports[`DetailView Renders correctly Matches Snapshot 1`] = `
                                 "muiPrepared": true,
                               }
                             }
-                          />
+                          >
+                            Sample Title
+                          </span>
                           <span
                             style={
                               Object {
@@ -151,7 +161,9 @@ exports[`DetailView Renders correctly Matches Snapshot 1`] = `
                                 "muiPrepared": true,
                               }
                             }
-                          />
+                          >
+                            Sample SubTitle
+                          </span>
                         </div>
                       </CardTitle>
                     </div>
