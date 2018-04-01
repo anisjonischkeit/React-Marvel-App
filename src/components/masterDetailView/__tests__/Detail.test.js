@@ -6,17 +6,17 @@ import IconButton from 'material-ui/IconButton';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Detail from "../Detail"
 
+import { testCallback, timesClickedSetup } from "../../../testUtils/testCallback"
+
+
 describe("Detail Component", () => {
-	let timesGoneBack = 0
-	const backClickHandler = () => {
-		timesGoneBack += 1
-	}
+	let { counter, callBack: backClickCallback } = timesClickedSetup()
 
 	const detailComponent = mount(
 		(<MuiThemeProvider>
 			<Detail
 				title="Sample Title"
-				onBackClick={backClickHandler}
+				onBackClick={backClickCallback}
 			>
 				<p id="sampleChild">sampleChild</p>
 				<p id="sampleChild2">sampleChild</p>
@@ -39,18 +39,8 @@ describe("Detail Component", () => {
 	})
 	
 	describe("onClicks trigger Correctly", () => {
-		it("onBackClick Triggers correctly", () => {
-			const backBtnClick = detailComponent.find(IconButton).first().props().onClick
-			expect(timesGoneBack).toBe(0)
-			backBtnClick()
-			expect(timesGoneBack).toBe(1)
-			backBtnClick()
-			expect(timesGoneBack).toBe(2)
-			backBtnClick()
-			backBtnClick()
-			backBtnClick()
-			expect(timesGoneBack).toBe(5)
-		})
+		const backBtnClick = detailComponent.find(IconButton).first().props().onClick
+		testCallback("onBackClick Triggers correctly", backBtnClick, counter)
 	})
 
 })
