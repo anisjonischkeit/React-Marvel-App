@@ -11,7 +11,6 @@ export default (props : PropsType) => (
 			title={props.title}
 			iconClassNameRight="muidocs-icon-navigation-expand-more"
 			iconElementLeft={<IconButton onClick={props.onMenuClick}><MenuIcon /></IconButton>}
-			// onLeftIconButtonTouchTap={props.onMenuClick}
 		/>
 		{props.children}
 	</div>
