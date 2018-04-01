@@ -8,7 +8,7 @@ export const SELECT_DATA_ITEM = 'SELECT_DATA_ITEM';
 export const SET_DATA_SEARCH_FIELD = 'SET_DATA_SEARCH_FIELD';
 export const SET_DATA_FIRST_ITEM = 'SET_DATA_FIRST_ITEM';
 
-export const getData = (dataName: string, dataObj: any, dataOrder: Array<string>, outOfData: boolean) => ({
+export const setData = (dataName: string, dataObj: any, dataOrder: Array<string>, outOfData: boolean) => ({
 	type: SET_DATA,
 	dataName,
 	dataObj,
@@ -58,7 +58,7 @@ const fetchData = (dataName: string, actionCreator, params = {}) => async (dispa
 		let outOfData = false
 		try {
 			const fetchRes = await marvelFetch(`https://gateway.marvel.com:443/v1/public/${dataName}`, params)
-			outOfData = fetchRes.results.length < fetchRes.limit
+			outOfData = fetchRes.offset + fetchRes.count >= fetchRes.total
 			data = fetchRes.results
 		} catch(err) {
 			// we are no longer loading so set this variable to false
@@ -83,7 +83,7 @@ const fetchData = (dataName: string, actionCreator, params = {}) => async (dispa
 
 export const fetchInitialData = (dataName: string) => (dispatch, getState) => {
 	const params = getState().data[dataName].params
-	dispatch(fetchData(dataName, getData, params));
+	return dispatch(fetchData(dataName, setData, params));
 }
 
 export const fetchMoreData = (dataName: string) => (dispatch, getState) => {
@@ -94,7 +94,7 @@ export const fetchMoreData = (dataName: string) => (dispatch, getState) => {
 		...currData.params
 	}
 
-	dispatch(fetchData(dataName, addData, params))
+	return dispatch(fetchData(dataName, addData, params))
 }
 
 export const fetchIndividualDataItem = (dataName: string, resourceURI: string) => async (dispatch, getState) => {
@@ -102,8 +102,6 @@ export const fetchIndividualDataItem = (dataName: string, resourceURI: string) =
 	try {
 		firstItemList = (await marvelFetch(resourceURI)).results
 	} catch(err) {
-		// we are no longer loading so set this variable to false
-		dispatch(setDataLoadingStatus(dataName, false))
 		alert("something went wrong while fetching marvel data")
 		return
 	}
@@ -113,5 +111,5 @@ export const fetchIndividualDataItem = (dataName: string, resourceURI: string) =
 	}
 
 	dispatch(setDataFirstItem(dataName, firstItemList[0]))
-	dispatch(selectDataItem(dataName, firstItemList[0].id))
+	return dispatch(selectDataItem(dataName, firstItemList[0].id))
 }

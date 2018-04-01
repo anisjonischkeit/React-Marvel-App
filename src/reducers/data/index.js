@@ -36,7 +36,7 @@ const initialDataObj = {
 	outOfData: false
 }
 
-const initialState = {
+export const initialState = {
 	characters: {...initialDataObj},
 	comics: {...initialDataObj},
 	creators: {...initialDataObj},
