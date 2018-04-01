@@ -7,6 +7,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Detail from "../Detail"
 
 import { testCallback, timesClickedSetup } from "../../../testUtils/testCallback"
+import { getSampleChildren, testRendersChildren } from "../../../testUtils/sampleChildren"
 
 
 describe("Detail Component", () => {
@@ -18,24 +19,13 @@ describe("Detail Component", () => {
 				title="Sample Title"
 				onBackClick={backClickCallback}
 			>
-				<p id="sampleChild">sampleChild</p>
-				<p id="sampleChild2">sampleChild</p>
+				{getSampleChildren()}
 			</Detail>
 		</MuiThemeProvider>)
 	)
 
 	describe("Renders correctly", () => {
-		it("Matches Snapshot", () => {
-			let tree = toJson(detailComponent);
-			expect(tree).toMatchSnapshot();
-		})
-
-		it("Renders Children", () => {
-			expect(detailComponent.find("#sampleChild").exists()).toBeTruthy()
-			expect(detailComponent.find("#sampleChild2").exists()).toBeTruthy()
-			expect(detailComponent.find("#sampleChild1000").exists()).toBeFalsy()
-		})
-
+		testRendersChildren(detailComponent)
 	})
 	
 	describe("onClicks trigger Correctly", () => {
