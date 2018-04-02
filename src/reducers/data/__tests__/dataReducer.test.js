@@ -1,24 +1,5 @@
-import reducer from '../'
+import reducer, { initialState } from '../'
 import * as actions from "../../../actions/data"
-import { ActionWork } from 'material-ui';
- 
-const initialDataObj = {
-	obj: null,
-	order: null,
-	loading: false,
-	selectedId: null,
-	firstItem: null,
-	params: {},
-	outOfData: false
-}
-
-const initialState = {
-	characters: {...initialDataObj},
-	comics: {...initialDataObj},
-	creators: {...initialDataObj},
-	events: {...initialDataObj},
-	series: {...initialDataObj},
-}
 
 const addSampleData = (initialState, dataName) => {
 	const newState = reducer(initialState, {
@@ -309,7 +290,7 @@ describe('Data reducer', () => {
 
 	it("Is an unrecognised action", () => {
 		const newState = reducer(initialState, {
-			type: "SOME_UNKOWN_ACTION_RANDOMNESSSAIWOR",
+			type: "SOME_INVALID_ACTION",
 			dataName: "some data",
 			dataObj: { someNewKey: "Some New Value" },
 			dataOrder: ["some", "new", "order", "of", "data"]
