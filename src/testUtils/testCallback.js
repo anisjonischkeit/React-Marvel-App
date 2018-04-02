@@ -1,13 +1,13 @@
-export const testCallback = (testName, callBack, counterObj) => {
+export const testCallback = (testName, callBack, counterObj, ...args) => {
 	it(testName, () => {
 		expect(counterObj.value).toBe(0)
-		callBack()
+		callBack(...args)
 		expect(counterObj.value).toBe(1)
-		callBack()
+		callBack(...args)
 		expect(counterObj.value).toBe(2)
-		callBack()
-		callBack()
-		callBack()
+		callBack(...args)
+		callBack(...args)
+		callBack(...args)
 		expect(counterObj.value).toBe(5)
 	})
 }
