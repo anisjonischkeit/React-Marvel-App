@@ -1,6 +1,6 @@
 import React from 'react';
 
-import MarvelListItem from '../../components/masterView/Item'
+import MarvelListItem from './Item'
 
 export type PropsType = {
   rawList: Array<{
@@ -8,27 +8,18 @@ export type PropsType = {
     img: string,
     heading: string,
     subheading: string,
-    onClick: () => void
+    active: boolean,
   }>,
-  loading: boolean
-}
-
-const getList = (list, loading: boolean, selectItem) => {
-  if (list != null) {
-    return list.map(item => (
-      <MarvelListItem key={item.key} {...item} selectItem={selectItem} />
-    ))
-  } else {
-    return <p>no data found</p>
-  }
+  loading: boolean,
+  selectItem: (id: number) => void
 }
  
 export default ({ rawList, loading, selectItem } : PropsType) => {
-  const list = getList(rawList, loading, selectItem)
-
   if (rawList != null) {
     return (
-      list
+      rawList.map(item => (
+        <MarvelListItem key={item.id} {...item} selectItem={selectItem} />
+      ))
     )
   } else {
     return null

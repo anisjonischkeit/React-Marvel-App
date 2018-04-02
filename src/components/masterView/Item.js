@@ -4,7 +4,16 @@ import Avatar from 'material-ui/Avatar'
 import { lightBlack } from 'material-ui/styles/colors';
 import { ListItem as MaterialListItem } from 'material-ui/List';
 
-export default class Item extends React.Component {
+type PropsType = {
+  id: number,
+  active: boolean,
+  img: string,
+  heading: string,
+  subheading: string,
+  selectItem: (itemId: number) => void,
+}
+
+export default class Item extends React.Component<PropsType> {
 
   selectItem = () => this.props.selectItem(this.props.id)
 
