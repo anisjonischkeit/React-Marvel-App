@@ -1,6 +1,6 @@
 import React from 'react';
 
-import ItemList from '../../components/masterView/ItemList';
+import ItemList from './ItemList';
 import './MasterViewItemList.css'
 
 import TextField from 'material-ui/TextField';
