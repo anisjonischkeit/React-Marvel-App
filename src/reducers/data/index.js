@@ -54,6 +54,7 @@ const createDataUpdater = (state, action) => update => ({
 
 export default (state: StateType = initialState, action : ActionsType) => {
 	const updateData = createDataUpdater(state, action)
+	
 	switch (action.type) {
 		case SET_DATA:
 			return updateData({
@@ -63,8 +64,8 @@ export default (state: StateType = initialState, action : ActionsType) => {
 			})
 		case ADD_DATA:
 			return updateData({
-				obj: {...state[action.dataName].obj, ...action.dataObj},
-				order: [...state[action.dataName].order, ...action.dataOrder],
+				obj: {...(state[action.dataName].obj || {}), ...action.dataObj},
+				order: [...(state[action.dataName].order || []), ...action.dataOrder],
 				outOfData: action.outOfData
 			})
 		case SET_DATA_SEARCH_FIELD:
