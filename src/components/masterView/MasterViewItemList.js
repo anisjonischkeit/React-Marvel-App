@@ -7,7 +7,25 @@ import TextField from 'material-ui/TextField';
 
 import CircularProgress from 'material-ui/CircularProgress';
 
-export default class FixedWidthItemList extends React.Component {
+type PropsType = {
+	onSearchChange: (value: string) => void,
+	executeSearch: () => void,
+	handleScroll: (element: React$Node) => void,
+	listName: string,
+	width: number,
+	loading: boolean,
+	rawList: Array<{
+    id: number,
+    img: string,
+    heading: string,
+    subheading: string,
+    active: boolean,
+  }>,
+	selectItem: (id: number) => void	
+}
+
+export default class FixedWidthItemList extends React.Component<PropsType> {
+	listElement: ?React$Node
 
 	onSearchChange = e => {
 		const value = e.currentTarget.value;

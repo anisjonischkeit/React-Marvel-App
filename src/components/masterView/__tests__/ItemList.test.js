@@ -7,7 +7,6 @@ import ItemList from "../ItemList"
 import MarvelListItem from '../Item'
 
 import { testCallback, timesClickedSetup } from "../../../testUtils/testCallback"
-import { getSampleChildren, testRendersChildren } from "../../../testUtils/sampleChildren"
 
 describe("Item Component", () => {
 	const clickTesters = [
