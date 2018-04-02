@@ -21,3 +21,7 @@ yarn start
 ```
 yarn test *
 ```
+
+## To do
+
+* Add loading spinner for images while they are loading in the detail view
