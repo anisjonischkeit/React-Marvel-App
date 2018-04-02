@@ -5,7 +5,7 @@ export type StateType = {
 	open: boolean
 }
 
-const initialState = {
+export const initialState = {
 	open: false
 }
 
