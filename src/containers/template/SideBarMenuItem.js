@@ -1,11 +1,11 @@
 import * as React from 'react';
 import MenuItem from '../../components/template/SideBarMenuItem';
-import { setSidebarOpenState } from '../../actions/template/sidebarActions'
+import { closeSideBar } from '../../actions/template/sidebarActions'
 import store from '../../store';
 import { withRouter } from 'react-router-dom'
 
 const onClickHandler = (link: string, history) => {
-	store.dispatch(setSidebarOpenState(false))
+	store.dispatch(closeSideBar())
 	history.push(link)
 }
 
