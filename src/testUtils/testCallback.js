@@ -13,7 +13,11 @@ export const testCallback = (testName, callBack, counterObj) => {
 }
 
 export const timesClickedSetup = () => {
-	let timesClickedCounter = {value: 0}
+	let timesClickedCounter = {
+		value: 0,
+	}
+	timesClickedCounter.reset = () => { timesClickedCounter.value = 0 }
+
 	const callBack = () => {
 		timesClickedCounter["value"] += 1
 	}
