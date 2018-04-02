@@ -58,7 +58,7 @@ export default class FixedWidthItemList extends React.Component<PropsType> {
 						<div>
 							<br />
 								<div style={{textAlign: 'center'}}>
-									<CircularProgress />
+									<CircularProgress color="rgb(0, 188, 212)"/>
 								</div>
 							<br />
 						</div>
