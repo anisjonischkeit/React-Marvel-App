@@ -3,7 +3,13 @@ import Drawer from 'material-ui/Drawer';
 
 import MediaQuery from 'react-responsive';
 
-const DesktopDrawer = ({open, onRequestChange, children}) => (
+type PropsType = {
+	open: boolean,
+	onRequestChange: () => void,
+	children: [React$Node]
+}
+
+const DesktopDrawer = ({open, onRequestChange, children} : PropsType) => (
 	<Drawer
 		open={true}
 		docked={!open}
@@ -17,7 +23,7 @@ const DesktopDrawer = ({open, onRequestChange, children}) => (
 	</Drawer>
 )
 
-export default ({open, onRequestChange, children}) => (
+export default ({open, onRequestChange, children} : PropsType) => (
 	<div>
 		<MediaQuery query="(max-width: 960px)">
 			<Drawer

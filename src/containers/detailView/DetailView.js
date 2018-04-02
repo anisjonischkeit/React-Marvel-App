@@ -2,6 +2,8 @@ import * as React from 'react';
 import DetailViewComponent from '../../components/detailView/DetailView';
 import DetailItemProperties from '../../components/detailView/DetailItemProperties';
 
+import type { DataType } from '../../reducers/data'
+
 import { bindActionCreators } from 'redux';
 import { fetchIndividualDataItem, selectDataItem } from '../../actions/data/'
 import { withRouter } from 'react-router-dom'
@@ -11,14 +13,43 @@ import { connect } from 'react-redux';
 
 import Detail from '../../components/masterDetailView/Detail'
 
-const DetailViewContainer = withRouter(props => {
+type DataObjItemType = {
+	id: number,
+	thumbnail: {
+		path: string,
+		extension: string
+	},
+	description: string,
+	characters: {
+		items: Array<*>
+	},
+	comics: {
+		items: Array<*>
+	}
+}
+
+type PropsType = {
+	selectedId : number,
+	dataObj : {
+		[id : number] : DataObjItemType
+	},
+	firstItem : DataObjItemType,
+	history : { push : (url: string) => void },
+	statNames : Array<string>,
+	displayName : string,
+	handleBackClick : () => void,
+	titleFieldName : string,
+	fetchIndividualDataItem : (dataName: string, resourceURI: string) => void 
+}
+
+export const DetailViewContainer = (props : PropsType) => {
 	
 	const onClickHandler = (dataName, resourceURI) => {
 		props.fetchIndividualDataItem(dataName, resourceURI)
 		props.history.push(`/${dataName}`)
 	}
 
- 	if (props.selectedId && props.dataObj) {
+ 	if (props.selectedId != null && props.dataObj) {
 		let selected = props.dataObj[props.selectedId];
 
 		if (selected == null) {
@@ -36,19 +67,6 @@ const DetailViewContainer = withRouter(props => {
 			})
 		)
 
-		const descriptionWithStats = (
-			<div>
-				<CardText>
-				 	{selected.description}
-				</CardText>
-				
-				<DetailItemProperties
-					itemProperties={itemProperties}
-				/>
-
-			</div>
-		)
-
 		return (
 			<Detail
 				title={props.displayName}
@@ -56,16 +74,25 @@ const DetailViewContainer = withRouter(props => {
 			>
 				<DetailViewComponent
 					title={selected[props.titleFieldName]}
-					subtitle={selected.id}
+					subtitle={String(selected.id)}
 					img={`${selected.thumbnail.path}/landscape_incredible.${selected.thumbnail.extension}`}
 				>
-					{descriptionWithStats}
+					<div>
+						<CardText>
+							{selected.description}
+						</CardText>
+						
+						<DetailItemProperties
+							itemProperties={itemProperties}
+						/>
+
+					</div>
 				</DetailViewComponent>
 			</Detail>
 		)
 	}
 	return null
-})
+}
 
 const mapStateToProps = (state, props) => {
 	return {
@@ -84,4 +111,4 @@ const mapDispatchToProps = (dispatch, props) => ({
 
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(DetailViewContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(DetailViewContainer))

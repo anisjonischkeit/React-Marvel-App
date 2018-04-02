@@ -8,7 +8,7 @@ import {
 	SET_DATA_FIRST_ITEM
 } from '../../actions/data/'
 
-type DataType = {
+export type DataType = {
 	obj: ?Array<any>,
 	order: ?Array<string>,
 	loading: boolean,
