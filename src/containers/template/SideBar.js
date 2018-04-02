@@ -28,7 +28,7 @@ const mapStateToProps = (state) => ({
   ...state.template.sidebar,
   menuItems: [
     ...menuItems.map(item => <MenuItem key={item.link} {...item} />),
-    <GitHubSideBarLink link='https://github.com/anisjonischkeit/React-Marvel-App' />
+    <GitHubSideBarLink key="gh-link" link='https://github.com/anisjonischkeit/React-Marvel-App' />
   ]
 });
 
