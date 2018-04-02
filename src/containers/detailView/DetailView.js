@@ -2,8 +2,6 @@ import * as React from 'react';
 import DetailViewComponent from '../../components/detailView/DetailView';
 import DetailItemProperties from '../../components/detailView/DetailItemProperties';
 
-import type { DataType } from '../../reducers/data'
-
 import { bindActionCreators } from 'redux';
 import { fetchIndividualDataItem, selectDataItem } from '../../actions/data/'
 import { withRouter } from 'react-router-dom'
