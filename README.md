@@ -22,6 +22,8 @@ yarn start
 yarn test *
 ```
 
+The tests can be found alongside their components
+
 ## To do
 
 * Add loading spinner for images while they are loading in the detail view
