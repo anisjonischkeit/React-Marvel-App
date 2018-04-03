@@ -3,19 +3,19 @@ import * as React from 'react';
 import List from './List'
 
 const mapSeriesToItemList = (item: any, idx) => ({
-	key: `${item.id}-${idx}`,
-	id: item.id,
-	img: `${item.thumbnail.path}/standard_medium.${item.thumbnail.extension}`,
-	heading: item.title,
-	subheading: item.id
+  key: `${item.id}-${idx}`,
+  id: item.id,
+  img: `${item.thumbnail.path}/standard_medium.${item.thumbnail.extension}`,
+  heading: item.title,
+  subheading: item.id
 })
 
 
 export default () => (
-	<List
-		reduxEntryPointName='series'
-		filterParamName='titleStartsWith'
-		displayName='Series'
-		mapDataItemToItemList={mapSeriesToItemList}
-	/>
+  <List
+    reduxEntryPointName='series'
+    filterParamName='titleStartsWith'
+    displayName='Series'
+    mapDataItemToItemList={mapSeriesToItemList}
+  />
 )

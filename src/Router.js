@@ -20,43 +20,43 @@ import SeriesMaster from './containers/masterView/SeriesList';
 import SeriesDetail from './containers/detailView/SeriesDetailView';
 
 export default () => (
-		<Switch>
-			<Redirect exact path='/' to='/characters' />
-      <Route exact path='/characters'>
-        <MasterDetailSwitcher
-          masterComponent={CharacterMaster}
-          detailComponent={CharacterDetail}
-          reduxEntryPointName='characters'
-        />
-      </Route>
-      <Route exact path='/comics'>
-        <MasterDetailSwitcher
-          masterComponent={ComicMaster}
-          detailComponent={ComicDetail}
-          reduxEntryPointName='comics'
-        />
-      </Route>
-      <Route exact path='/creators'>
-        <MasterDetailSwitcher
-          masterComponent={CreatorMaster}
-          detailComponent={CreatorDetail}
-          reduxEntryPointName='creators'
-        />
-      </Route>
-      <Route exact path='/events'>
-        <MasterDetailSwitcher
-          masterComponent={EventMaster}
-          detailComponent={EventDetail}
-          reduxEntryPointName='events'
-        />
-      </Route>
-      <Route exact path='/series'>
-        <MasterDetailSwitcher
-          masterComponent={SeriesMaster}
-          detailComponent={SeriesDetail}
-          reduxEntryPointName='series'
-        />
-      </Route>
-    </Switch>
+  <Switch>
+    <Redirect exact path='/' to='/characters' />
+    <Route exact path='/characters'>
+      <MasterDetailSwitcher
+        masterComponent={CharacterMaster}
+        detailComponent={CharacterDetail}
+        reduxEntryPointName='characters'
+      />
+    </Route>
+    <Route exact path='/comics'>
+      <MasterDetailSwitcher
+        masterComponent={ComicMaster}
+        detailComponent={ComicDetail}
+        reduxEntryPointName='comics'
+      />
+    </Route>
+    <Route exact path='/creators'>
+      <MasterDetailSwitcher
+        masterComponent={CreatorMaster}
+        detailComponent={CreatorDetail}
+        reduxEntryPointName='creators'
+      />
+    </Route>
+    <Route exact path='/events'>
+      <MasterDetailSwitcher
+        masterComponent={EventMaster}
+        detailComponent={EventDetail}
+        reduxEntryPointName='events'
+      />
+    </Route>
+    <Route exact path='/series'>
+      <MasterDetailSwitcher
+        masterComponent={SeriesMaster}
+        detailComponent={SeriesDetail}
+        reduxEntryPointName='series'
+      />
+    </Route>
+  </Switch>
 
 );

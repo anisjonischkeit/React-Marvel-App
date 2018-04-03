@@ -11,26 +11,26 @@ import { getSampleChildren, testRendersChildren } from "../../../testUtils/sampl
 
 
 describe("Detail Component", () => {
-	let { counter, callBack: backClickCallback } = timesClickedSetup()
+  let { counter, callBack: backClickCallback } = timesClickedSetup()
 
-	const detailComponent = mount(
-		(<MuiThemeProvider>
-			<Detail
-				title="Sample Title"
-				onBackClick={backClickCallback}
-			>
-				{getSampleChildren()}
-			</Detail>
-		</MuiThemeProvider>)
-	)
+  const detailComponent = mount(
+    (<MuiThemeProvider>
+      <Detail
+        title="Sample Title"
+        onBackClick={backClickCallback}
+      >
+        {getSampleChildren()}
+      </Detail>
+    </MuiThemeProvider>)
+  )
 
-	describe("Renders correctly", () => {
-		testRendersChildren(detailComponent)
-	})
-	
-	describe("onClicks trigger Correctly", () => {
-		const backBtnClick = detailComponent.find(IconButton).first().props().onClick
-		testCallback("onBackClick Triggers correctly", backBtnClick, counter)
-	})
+  describe("Renders correctly", () => {
+    testRendersChildren(detailComponent)
+  })
+  
+  describe("onClicks trigger Correctly", () => {
+    const backBtnClick = detailComponent.find(IconButton).first().props().onClick
+    testCallback("onBackClick Triggers correctly", backBtnClick, counter)
+  })
 
 })

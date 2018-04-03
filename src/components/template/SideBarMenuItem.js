@@ -3,12 +3,12 @@ import React from 'react';
 import MenuItem from 'material-ui/MenuItem';
 
 type MenuItemDataType = {
-	text: string,
-	link: string
+  text: string,
+  link: string
 };
 
 type PropsType = {
-	text: MenuItemDataType
+  text: MenuItemDataType
 };
 
 export default ({ text, active, leftIcon, onClick }: PropsType) => (
