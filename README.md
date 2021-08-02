@@ -1,8 +1,5 @@
 # React-Marvel-App
 
-## Viewing The Application
-The application is available at <http://marvel.anis.com.au>
-
 ## Running The Application Locally
 1. Clone the repository on the master branch
 2. Create a Marvel Developer Account [here](https://developer.marvel.com/account):
